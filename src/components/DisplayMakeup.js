@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 
 function DisplayMakeup({makeup}) {
@@ -17,7 +18,8 @@ function DisplayMakeup({makeup}) {
     // const initialMakeupDisplay = makeup.slice(0,19)
     // console.log(initialMakeupDisplay)
     const [currentDisplay, setCurrentDisplay] = useState(makeup.slice(0,19));
-    const buttons = []
+    const buttons = [];
+    const makeupObject = "the foundation";
 
     const getDisplayDirectory = () => {
         // write code
@@ -38,20 +40,24 @@ function DisplayMakeup({makeup}) {
 
 
     return (
-        <div className="kyleIsStupid">
+        <ul className="kyleIsStupid">
             { 
-                currentDisplay.map((individualMakeup, index) => {
+                currentDisplay.map((individualMakeup) => {
                     return(
-                        <div className="makeupCard">
+                        <li className="makeupCard" key={individualMakeup.id}>
                             <h2>{individualMakeup.name}</h2>
-                            <p>{index+1}</p>
-                            <img src={individualMakeup.api_featured_image} alt="individualMakeup.name" />
-                        </div>
+                            <Link to={{
+                                pathname: `/${individualMakeup.id}`,
+                                state: {individualMakeup}
+                            }}>
+                                <img src={individualMakeup.api_featured_image} alt="individualMakeup.name" />
+                            </Link>
+                        </li>
                     )
                 })
             }
             {buttons}
-        </div>
+        </ul>
     )
 }
 
