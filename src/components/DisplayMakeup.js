@@ -19,7 +19,7 @@ function DisplayMakeup({makeup}) {
     // console.log(initialMakeupDisplay)
     const [currentDisplay, setCurrentDisplay] = useState(makeup.slice(0,19));
     const buttons = [];
-    const makeupObject = "the foundation";
+
 
     const getDisplayDirectory = () => {
         // write code
@@ -46,10 +46,7 @@ function DisplayMakeup({makeup}) {
                     return(
                         <li className="makeupCard" key={individualMakeup.id}>
                             <h2>{individualMakeup.name}</h2>
-                            <Link to={{
-                                pathname: `/${individualMakeup.id}`,
-                                state: {individualMakeup}
-                            }}>
+                            <Link to={`/${individualMakeup.id}`}>
                                 <img src={individualMakeup.api_featured_image} alt="individualMakeup.name" />
                             </Link>
                         </li>

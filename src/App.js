@@ -1,27 +1,28 @@
 import './App.css';
 
-// import axios from 'axios';
-// import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // import Catalogue from './components/Catalogue';
 import DisplayItemInfo from './components/DisplayItemInfo';
-// import DisplayMakeup from './components/DisplayMakeup';
+import DisplayMakeup from './components/DisplayMakeup';
 import Catalogue from './components/Catalogue';
 
 function App() {
 
-  // const [makeup, setMakeup] = useState([]);
+  const [makeup, setMakeup] = useState([]);
 
-  // useEffect(() => {
-  //   axios({
-  //     url: 'http://makeup-api.herokuapp.com/api/v1/products.json',
-  //     params: {
-  //       product_type: 'foundation'
-  //     }
-  //   }).then((res) => {
-  //     setMakeup(res.data);
-  //   })
-  // }, []);
+  useEffect(() => {
+    axios({
+      url: 'http://makeup-api.herokuapp.com/api/v1/products.json',
+      params: {
+        product_type: 'foundation'
+      }
+    }).then((res) => {
+      setMakeup(res.data);
+    })
+  }, []);
+
 
   return (
     <Router>
@@ -29,18 +30,18 @@ function App() {
         <h1>Hello, world</h1>
       </div>
 
-      <Route exact path="/">
-        <Catalogue />
-        {/* {
-          makeup.length ?
-            <DisplayMakeup makeup={makeup} />
-            : null
-        } */}
-      </Route>
+        <Route exact path="/">
+          {/* <Catalogue /> */}
+          {
+            makeup.length ?
+              <DisplayMakeup makeup={makeup} />
+              : null
+          }
+        </Route>
 
-      <Route path="/:product">
-        <DisplayItemInfo/>
-      </Route>
+        <Route path="/:product">
+          <DisplayItemInfo makeup={makeup}/>
+        </Route>
     </Router>
   );
 }

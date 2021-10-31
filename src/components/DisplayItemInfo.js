@@ -1,14 +1,25 @@
 import { useParams } from 'react-router-dom';
 
-function DisplayItemInfo(props) {
+function DisplayItemInfo({makeup}) {
 
     const { product } = useParams();
-    const { id } = (props.location && props.location.state)||{};
-    console.log(id);
+    
+    // create a function that will filter the desired makeup product from the APi makeup array
+    const filterMakeup = (item) => {
+        // console.log(item.id)
+        if(item.id === parseInt(product)){
+            return item
+        }
+    }
+
+    let theMakeup = {...makeup.filter(filterMakeup)}
+    
+    
+    
 
     return (
         <div>
-            <p>Makeup!</p>
+            <h2>{theMakeup[0].name}</h2>
         </div>
     )
 }
