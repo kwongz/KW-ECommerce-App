@@ -20,8 +20,12 @@ function App() {
   return (
     <div className="App">
       <h1>Hello, world</h1>
-
-      <DisplayMakeup number="100" />
+      {
+        makeup.length ?
+        <DisplayMakeup makeup={makeup} />
+        : null
+      }
+      
     </div>
   );
 }
@@ -29,7 +33,7 @@ function App() {
 export default App;
 
   // MVPS
-// Make api call to get all foundations
+// Make api call to get all foundations check
 // clicking on a product will display more information
 // have a cart where user can add the products
 
