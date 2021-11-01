@@ -1,11 +1,8 @@
-let allCartItems = [];
+
 
 function Cart( {cartItems} ) {
-    let cartItemClone = {...cartItems};
-    
-    console.log("test");
-    allCartItems.push("cartItemClone");
-    console.log(allCartItems);
+
+    console.log(cartItems)
 
     return (
         <>

@@ -22,6 +22,7 @@ function DisplayMakeup({ makeup }) {
     const buttons = [];
     const [callModal, setCallModal] = useState(false);
     let [makeupInfo, setMakeupInfo] = useState({});
+    const [addedToCart, setAddedToCart] = useState([]);
 
 
     const getDisplayDirectory = () => {
@@ -48,6 +49,10 @@ function DisplayMakeup({ makeup }) {
 
     const roundPrice = (price) => {
         return (Math.round(price * 100) / 100).toFixed(2)
+    }
+
+    const handleAddToCart = (cartItem) => {
+        setAddedToCart([...addedToCart,cartItem]);
     }
 
 
@@ -83,6 +88,8 @@ function DisplayMakeup({ makeup }) {
                     onClose={() => setCallModal(false)}
                     info={makeupInfo}
                     forComponent="quicklook"
+                    addToCart={handleAddToCart}
+                    cart={addedToCart}
                 />
                 : null
             }
