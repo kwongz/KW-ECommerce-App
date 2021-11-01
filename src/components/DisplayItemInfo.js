@@ -1,26 +1,20 @@
-import { useParams } from 'react-router-dom';
 
-function DisplayItemInfo({makeup}) {
-
-    const { product } = useParams();
-    
-    // create a function that will filter the desired makeup product from the APi makeup array
-    const filterMakeup = (item) => {
-        // console.log(item.id)
-        if(item.id === parseInt(product)){
-            return item
-        }
-    }
-
-    let theMakeup = {...makeup.filter(filterMakeup)}
-    
-    
-    
+function DisplayItemInfo({info}) {
 
     return (
-        <div>
-            <h2>{theMakeup[0].name}</h2>
-        </div>
+        <>
+            <div className="imageContainer">
+                <img src={info.api_featured_image} alt={info.name} />
+            </div>
+            <div className="textContent">
+                <p className="brand">{info.brand}</p>
+                <h2>{info.name}</h2>
+                <p className="price">
+                    `${info.price}`
+                </p>
+
+            </div>
+        </>
     )
 }
 

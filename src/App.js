@@ -3,10 +3,7 @@ import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import Catalogue from './components/Catalogue';
-import DisplayItemInfo from './components/DisplayItemInfo';
 import DisplayMakeup from './components/DisplayMakeup';
-import Catalogue from './components/Catalogue';
 
 function App() {
 
@@ -39,9 +36,9 @@ function App() {
           }
         </Route>
 
-        <Route path="/:product">
-          <DisplayItemInfo makeup={makeup}/>
-        </Route>
+        {/* <Route path="/product">
+          <DisplayItemInfo/>
+        </Route> */}
     </Router>
   );
 }
