@@ -65,7 +65,7 @@ function DisplayMakeup({ makeup }) {
                                 <div className="imageContainer">
                                     <img src={individualMakeup.api_featured_image} alt="individualMakeup.name" />
                                 </div>
-                                <div class="textContent">
+                                <div className="textContent">
                                     <p>{individualMakeup.brand}</p>
                                     <h2>{individualMakeup.name}</h2>
                                     <p>${roundPrice(individualMakeup.price)}</p>
@@ -80,6 +80,7 @@ function DisplayMakeup({ makeup }) {
                 open={isModalOpen} 
                 onClose={() => setIsModalOpen(false)}
                 info={makeupInfo}
+                forComponent="quicklook"
             />
         </div>
     )

@@ -3,8 +3,9 @@
 function Nav() {
     return (
         <nav>
-            <ul class="navigation">
-                <li>Foundation</li>
+            <ul className="navigation">
+                {/* <li>Foundation</li> */}
+                <li>Cart</li>
             </ul>
         </nav>
     )

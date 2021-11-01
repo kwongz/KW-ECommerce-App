@@ -24,7 +24,7 @@ const Catalogue = () => {
                 isLoading ?
                     <div className="loader-wrapper">
                         <div className="loader-wrapper-content">
-                            <span className="loader"><span class="loader-inner"></span></span>
+                            <span className="loader"><span className="loader-inner"></span></span>
                         </div>
                     </div>
                 : <DisplayMakeup makeup={makeup} />
