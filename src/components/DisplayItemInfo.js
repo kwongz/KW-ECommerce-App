@@ -12,7 +12,6 @@ function DisplayItemInfo({info}) {
                 <p className="price">
                     ${info.price}
                 </p>
-
             </div>
         </>
     )

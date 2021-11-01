@@ -20,7 +20,7 @@ function DisplayMakeup({ makeup }) {
     // console.log(initialMakeupDisplay)
     const [currentDisplay, setCurrentDisplay] = useState(makeup.slice(0, 19));
     const buttons = [];
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [callModal, setCallModal] = useState(false);
     let [makeupInfo, setMakeupInfo] = useState({});
 
 
@@ -43,7 +43,7 @@ function DisplayMakeup({ makeup }) {
 
     const handleModalInfo = (info) => {
         setMakeupInfo(info);
-        setIsModalOpen(true);
+        setCallModal(true);
     }
 
     const roundPrice = (price) => {
@@ -76,12 +76,16 @@ function DisplayMakeup({ makeup }) {
                 }
             </ul>
             {buttons}
-            <Modal 
-                open={isModalOpen} 
-                onClose={() => setIsModalOpen(false)}
-                info={makeupInfo}
-                forComponent="quicklook"
-            />
+
+            {
+                callModal ?
+                <Modal
+                    onClose={() => setCallModal(false)}
+                    info={makeupInfo}
+                    forComponent="quicklook"
+                />
+                : null
+            }
         </div>
     )
 }

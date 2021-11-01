@@ -134,7 +134,7 @@ Model Styling
   margin-top: 20px;
 }
 
-.quicklook button {
+.closeModalButton {
   position: absolute;
   right: 0;
   background-color: transparent;
@@ -142,7 +142,7 @@ Model Styling
   padding: 10px;
 }
 
-.quicklook button:hover {
+.closeModalButton:hover {
   transform: scale(1.5);
 }
 

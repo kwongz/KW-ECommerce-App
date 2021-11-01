@@ -1,33 +1,43 @@
 import ReactDom from "react-dom";
-import { useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
+import Cart from "./Cart";
 import DisplayItemInfo from "./DisplayItemInfo";
 
-function Modal({ open, onClose, info, forComponent }) {
+function Modal({ onClose, info, forComponent }) {
     const [forCart, setForCart] =useState(false);
-
-    if (!open) {
-        return null;
-    } else {
+    const [addedToCart, setAddedToCart] = useState([]);
+    
+    useEffect(() => {
         if(forComponent === "quicklook") {
             setForCart(false)
+            console.log("quicklook")
         } else if(forComponent === "cart") {
             setForCart(true)
+            console.log("cart")
         }
-    }
+    },[forComponent])
 
+    const handleAddToCart = () => {
+        setAddedToCart(info);
+        setForCart(true);
+    }
 
     return ReactDom.createPortal(
         <>
             {
                 forCart? 
+                <div className="cartContainer">
+                    <Cart cartItems={addedToCart}/>
+                    <button onClick={onClose}>close cart</button>
+                </div>
+                :
                 <div className="quicklookContainer">
                     <div className="quicklook wrapper">
                         <DisplayItemInfo info={info} />
-                        <button onClick={onClose}>x</button>
+                        <button className="closeModalButton" onClick={onClose}>x</button>
+                        <button onClick={handleAddToCart}>Add TO CART</button>
                     </div>
                 </div>
-                :
-                <div className="cartContainer"></div>
 
             }
         </>,
