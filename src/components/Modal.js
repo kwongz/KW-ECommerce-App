@@ -7,9 +7,11 @@ function Modal( { open, onClose, info }) {
     }
 
     return ReactDom.createPortal(
-        <div className="modal">
-            <DisplayItemInfo info={info} />
-            <button onClick={onClose}>Close Modal</button>
+        <div className="quicklookContainer">
+            <div className="quicklook wrapper">
+                <DisplayItemInfo info={info} />
+                <button onClick={onClose}>x</button>
+            </div>
         </div>,
         document.getElementById('portal')
     )
