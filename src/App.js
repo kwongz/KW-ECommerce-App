@@ -1,47 +1,23 @@
 import './App.css';
 
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import DisplayMakeup from './components/DisplayMakeup';
 import Catalogue from './components/Catalogue';
+import Nav from './components/Nav';
 
 function App() {
-
-  // const [makeup, setMakeup] = useState([]);
-
-  // useEffect(() => {
-  //   axios({
-  //     url: 'http://makeup-api.herokuapp.com/api/v1/products.json',
-  //     params: {
-  //       product_type: 'foundation'
-  //     }
-  //   }).then((res) => {
-  //     setMakeup(res.data);
-  //   })
-  // }, []);
 
 
   return (
     <Router>
       <header>
         <h1>Hello, world</h1>
+        <Nav />
       </header>
       <main>
         <Route exact path="/">
           <Catalogue />
-          {/* {
-            makeup.length ?
-              <DisplayMakeup makeup={makeup} />
-              : null
-          } */}
         </Route>
       </main>
-
-
-        {/* <Route path="/product">
-          <DisplayItemInfo/>
-        </Route> */}
     </Router>
   );
 }
