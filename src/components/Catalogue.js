@@ -17,13 +17,13 @@ const Catalogue = () => {
     }, []);
 
     return (
-        <div className="KyleIsStupid">
+        <>
             {
                 makeup.length ?
                     <DisplayMakeup makeup={makeup} />
                     : null
             }
-        </div>
+        </>
     );
 }
 

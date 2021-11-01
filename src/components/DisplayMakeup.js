@@ -29,7 +29,7 @@ function DisplayMakeup({ makeup }) {
         const buttonLength = Math.ceil(makeup.length / 20)
 
         for (let i = 0; i < buttonLength; i++) {
-            buttons.push(<button onClick={() => sortMakeup(i)} key={i}>{i + 1}</button>)
+            buttons.push(<button className="numberedButtons" onClick={() => sortMakeup(i)} key={i}>{i + 1}</button>)
         }
     }
     getDisplayDirectory();
@@ -48,32 +48,35 @@ function DisplayMakeup({ makeup }) {
 
 
     return (
-        <>
+        <div className="wrapper">
             <ul className="kyleIsStupid">
                 {
                     currentDisplay.map((individualMakeup) => {
                         return (
-                            <li className="makeupCard" key={individualMakeup.id}>
-                                <h2>{individualMakeup.name}</h2>
+                            <li 
+                                className="makeupCard" 
+                                key={individualMakeup.id}
+                                onClick={() => handleModalInfo(individualMakeup)}
+                            >
                                 <div className="imageContainer">
                                     <img src={individualMakeup.api_featured_image} alt="individualMakeup.name" />
                                 </div>
-                                <button
-                                    onClick={() => handleModalInfo(individualMakeup)}
-                                >
-                                    Open Modal
-                                </button>
-
+                                <div class="textContent">
+                                    <p>{individualMakeup.brand}</p>
+                                    <h2>{individualMakeup.name}</h2>
+                                </div>
                             </li>
                         )
                     })
                 }
-                {buttons}
             </ul>
-            <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                <DisplayItemInfo info={makeupInfo} />
-            </Modal>
-        </>
+            {buttons}
+            <Modal 
+                open={isModalOpen} 
+                onClose={() => setIsModalOpen(false)}
+                info={makeupInfo}
+            />
+        </div>
     )
 }
 
