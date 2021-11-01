@@ -46,10 +46,14 @@ function DisplayMakeup({ makeup }) {
         setIsModalOpen(true);
     }
 
+    const roundPrice = (price) => {
+        return (Math.round(price * 100) / 100).toFixed(2)
+    }
+
 
     return (
         <div className="wrapper">
-            <ul className="kyleIsStupid">
+            <ul className="allMakeupContainer">
                 {
                     currentDisplay.map((individualMakeup) => {
                         return (
@@ -64,6 +68,7 @@ function DisplayMakeup({ makeup }) {
                                 <div class="textContent">
                                     <p>{individualMakeup.brand}</p>
                                     <h2>{individualMakeup.name}</h2>
+                                    <p>${roundPrice(individualMakeup.price)}</p>
                                 </div>
                             </li>
                         )

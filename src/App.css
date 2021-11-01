@@ -10,9 +10,17 @@ html {
   font-size: 125%;
 }
 
-h1, h2, p {
+h1, h2, p, ul {
   margin: 0;
   padding: 0;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+p {
+  font-size: 1rem;
 }
 
 
@@ -25,36 +33,52 @@ GENERAL
   margin: 0 auto;
 }
 
-ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-li {
-  list-style: none;
-  padding: 20px;
-  height: 400px;
-  width: 300px;
-  cursor: pointer;
-}
-
-li:hover {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-
 img {
   width: 100%;
   display: block;
 }
 
-ul .imageContainer {
+li {
+  list-style: none;
+}
+
+/*========================================================================================================
+NAV
+==========================================================================================================*/
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+/*========================================================================================================
+MAIN
+==========================================================================================================*/
+.allMakeupContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.allMakeupContainer li {
+  padding: 20px;
+  height: 400px;
+  width: 300px;
+  cursor: pointer;
+  position: relative;
+}
+
+.allMakeupContainer li:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.allMakeupContainer .imageContainer {
   width: 60%;
   margin: 0 auto;
 }
 
-ul .textContent {
-  margin-top: 2%;
+.allMakeupContainer .textContent {
+  position: absolute;
+  bottom: 20px;
 }
 
 .numberedButtons {
