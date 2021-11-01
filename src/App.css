@@ -61,3 +61,104 @@ ul .textContent {
   padding: 5px 10px;
   margin: 0 5px;
 }
+
+.brand {
+  text-transform: capitalize;
+}
+
+/*========================================================================================================
+Model Styling
+==========================================================================================================*/
+
+.quicklookContainer {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quicklook  {
+  height: 50vh;
+  max-height: 500px;
+  width: 80vw;
+  display: flex;
+  background-color: #FCF7FF;
+  position: relative;
+  border-radius: 15px;
+}
+
+.quicklook .imageContainer {
+  width: calc(100% - 70% - 40px);
+  margin: 0 20px;
+  margin-top: 20px;
+}
+
+.quicklook .imageContainer img{
+  object-fit: contain;
+  height: 250px;
+}
+
+.quicklook .textContent {
+  margin-top: 20px;
+}
+
+.quicklook button {
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+}
+
+.quicklook .textContent h2 {
+  padding-top: 20px;
+}
+
+/*========================================================================================================
+Loading Animation
+==========================================================================================================*/
+
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background-color: #242f3f; */
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-wrapper-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.loader {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  border: 4px solid #878C8F;
+  animation: loader 2s infinite ease;
+}
+
+@keyframes loader {
+  0% { transform: rotate(0deg);}
+  25% { transform: rotate(180deg);}
+  50% { transform: rotate(180deg);}
+  75% { transform: rotate(360deg);}
+  100% { transform: rotate(360deg);}
+}
+@keyframes loader-inner {
+  0% { height: 0%;}
+  25% { height: 0%;}
+  50% { height: 100%;}
+  75% { height: 100%;}
+  100% { height: 0%;}
+}

@@ -4,6 +4,7 @@ import DisplayMakeup from './DisplayMakeup';
 
 const Catalogue = () => {
     const [makeup, setMakeup] = useState([]);
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         axios({
@@ -13,15 +14,20 @@ const Catalogue = () => {
             }
         }).then((res) => {
             setMakeup(res.data);
+            setIsLoading(false)
         })
     }, []);
 
     return (
         <>
             {
-                makeup.length ?
-                    <DisplayMakeup makeup={makeup} />
-                    : null
+                isLoading ?
+                    <div className="loader-wrapper">
+                        <div className="loader-wrapper-content">
+                            <span className="loader"><span class="loader-inner"></span></span>
+                        </div>
+                    </div>
+                : <DisplayMakeup makeup={makeup} />
             }
         </>
     );

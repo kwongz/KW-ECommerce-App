@@ -10,7 +10,7 @@ function DisplayItemInfo({info}) {
                 <p className="brand">{info.brand}</p>
                 <h2>{info.name}</h2>
                 <p className="price">
-                    `${info.price}`
+                    ${info.price}
                 </p>
 
             </div>
