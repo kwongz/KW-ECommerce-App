@@ -1,5 +1,4 @@
 import './App.css';
-
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Catalogue from './components/Catalogue';
 import Nav from './components/Nav';

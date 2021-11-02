@@ -3,16 +3,14 @@ import { useEffect, useState } from "react";
 import Cart from "./Cart";
 import DisplayItemInfo from "./DisplayItemInfo";
 
-function Modal({ onClose, info, forComponent, addToCart, cart }) {
+function Modal({ onClose, info, forComponent, addToCart, cart, roundPrice }) {
     const [forCart, setForCart] = useState(false);
     
     useEffect(() => {
         if(forComponent === "quicklook") {
             setForCart(false)
-            console.log("quicklook")
         } else if(forComponent === "cart") {
             setForCart(true)
-            console.log("cart")
         }
     },[forComponent])
 
@@ -47,3 +45,7 @@ function Modal({ onClose, info, forComponent, addToCart, cart }) {
 }
 
 export default Modal
+
+
+
+

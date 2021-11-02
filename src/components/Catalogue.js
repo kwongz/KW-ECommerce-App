@@ -4,7 +4,7 @@ import DisplayMakeup from './DisplayMakeup';
 
 const Catalogue = () => {
     const [makeup, setMakeup] = useState([]);
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         axios({
