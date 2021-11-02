@@ -39,7 +39,12 @@ function DisplayMakeup({ makeup }) {
     }
 
     const handleAddToCart = (cartItem) => {
-        const cartObj = {name: cartItem.name, quantity: 1, price: cartItem.price}
+        const cartObj = {
+            name: cartItem.name, 
+            quantity: 1, 
+            price: parseInt(cartItem.price), 
+            finalPrice: parseInt(cartItem.price)
+        }
         setAddedToCart([...addedToCart,cartObj]);
     }
 
