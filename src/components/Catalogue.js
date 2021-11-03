@@ -2,21 +2,22 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import DisplayMakeup from './DisplayMakeup';
 
-const Catalogue = () => {
+const Catalogue = ({ callProduct }) => {
     const [makeup, setMakeup] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
+    
     useEffect(() => {
+        setIsLoading(true);
         axios({
             url: 'http://makeup-api.herokuapp.com/api/v1/products.json',
             params: {
-                product_type: 'foundation'
+                product_type: callProduct
             }
         }).then((res) => {
             setMakeup(res.data);
-            setIsLoading(false)
+            setIsLoading(false);
         })
-    }, []);
+    }, [callProduct]);
 
     return (
         <>

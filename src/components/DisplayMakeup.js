@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./Modal";
 
 
 function DisplayMakeup({ makeup }) {
 
-    const [currentDisplay, setCurrentDisplay] = useState(makeup.slice(0, 19));
+    const [currentDisplay, setCurrentDisplay] = useState([]);
     // Potential problem for future renders
     const buttons = [];
     const [callModal, setCallModal] = useState(false);
     const [makeupInfo, setMakeupInfo] = useState({});
     const [addedToCart, setAddedToCart] = useState([]);
+
+    useEffect(() => {
+        setCurrentDisplay(makeup.slice(0, 19))
+    }, [makeup])
 
 
     const getDisplayDirectory = () => {
@@ -20,7 +24,6 @@ function DisplayMakeup({ makeup }) {
             buttons.push(<button className="numberedButtons" onClick={() => sortMakeup(i)} key={i}>{i + 1}</button>)
         }
     }
-    getDisplayDirectory();
 
     const sortMakeup = (num) => {
         const startingPoint = num * 20;
@@ -55,6 +58,8 @@ function DisplayMakeup({ makeup }) {
             setAddedToCart([...addedToCart, cartObj]);       
         }
     }
+
+    getDisplayDirectory();
 
 
     return (

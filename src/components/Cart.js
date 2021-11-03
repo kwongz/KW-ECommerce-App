@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { useEffect } from 'react/cjs/react.development';
+import { useState, useEffect } from 'react'
 
 function Cart( {cartItems} ) {
     const [cartInventory, setCartInventory] = useState(cartItems)
@@ -28,8 +27,6 @@ function Cart( {cartItems} ) {
         })
         setTotalCost(cost);
     }
-
-
 
 
     return (
