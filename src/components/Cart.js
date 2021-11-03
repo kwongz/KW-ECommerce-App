@@ -2,22 +2,11 @@ import { useState } from 'react'
 import { useEffect } from 'react/cjs/react.development';
 
 function Cart( {cartItems} ) {
-    const [cartInventory, setCartInventory] = useState([])
+    const [cartInventory, setCartInventory] = useState(cartItems)
     const [totalCost, setTotalCost] = useState(0);
 
     useEffect(() => {
-        handleTotalCost();
-        const tempArray = [];
-
-        for (let i = 0; i < cartInventory.length; i++) {
-            for (let j = 0; j < cartItems.length; i++)
-                if (cartItems[j].name !== cartInventory[i].name) {
-                    tempArray.push(cartItems[j]);
-                } else {
-                    handleAdd(cartItems[j]);
-                }
-        }
-        setCartInventory(tempArray);
+        handleTotalCost();     
     }, cartItems )
 
     const handleAdd = (item) => {
@@ -25,7 +14,7 @@ function Cart( {cartItems} ) {
         tempArray.filter((tempItem) => {
             if (tempItem.name === item.name) {
                 tempItem.quantity = tempItem.quantity + 1;
-                tempItem.finalPrice = tempItem.price + tempItem.finalPrice;
+                tempItem.finalPrice = tempItem.quantity * tempItem.price;
             } 
         })
         handleTotalCost();
