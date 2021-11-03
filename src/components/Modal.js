@@ -2,24 +2,16 @@ import ReactDom from "react-dom";
 import { useEffect, useState } from "react";
 import Cart from "./Cart";
 import DisplayItemInfo from "./DisplayItemInfo";
-import { useTransition, animated } from 'react-spring'
 import { shoppingCartArray } from "./shoppingCartArray";
 
-function Modal({ onClose, info, forComponent, roundPrice }) {
+function Modal({ onClose, info, forComponent }) {
     const [forCart, setForCart] = useState(false);
-    const [fromNav, setFromNav] = useState(false);
-    const [cartItem, setCartItem] = useState();
 
     useEffect(() => {
         if (forComponent === "quicklook") {
             setForCart(false)
         } else if (forComponent === "cart") {
             setForCart(true)
-            if (forComponent === "cartNav") {
-                setFromNav(true);
-            } else {
-                setFromNav(false);
-            }
         }
     }, [forComponent])
 
@@ -35,21 +27,15 @@ function Modal({ onClose, info, forComponent, roundPrice }) {
         <>
             {
                 forCart ?
-                    <div className="cartContainer">
-                        <Cart />
-                        <button onClick={onClose}>close cart</button>
+                    <div className="cartModal" onClick={onClose}>
+                        <div className="cartContainer" onClick={e => e.stopPropagation()}>
+                            <Cart />
+                            <button onClick={onClose}>close cart</button>
+                        </div>
                     </div>
-                    // fromNav ? 
-                    //     <Cart />
-                    //     :
-                    //         <div className="cartContainer">
-                    //             <Cart cartItem={cartItem} roundPrice={roundPrice}/>
-                    //             <button onClick={onClose}>close cart</button>
-                    //         </div>
-                    //     )
                     :
-                    <div className="quicklookContainer">
-                        <div className="quicklook wrapper">
+                    <div className="quicklookContainer" onClick={onClose}>
+                        <div className="quicklook wrapper" onClick={e => e.stopPropagation()}>
                             <DisplayItemInfo info={info} />
                             <button className="closeModalButton" onClick={onClose}>x</button>
                             <button onClick={handleOnClick}>Add TO CART</button>

@@ -1,6 +1,5 @@
 import Modal from "./Modal";
 import {useState} from 'react';
-import { cartArray } from "./shoppingCartArray";
 
 
 function Nav({ navProductType }) {
@@ -26,7 +25,7 @@ function Nav({ navProductType }) {
                     <Modal
                         onClose={() => setCallModal(false)}
                         forComponent="cart"
-                        info={cartArray}
+                        info= ""
                     />
                     : null
             }

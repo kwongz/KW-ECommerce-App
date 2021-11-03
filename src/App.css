@@ -107,7 +107,7 @@ MAIN
 /*========================================================================================================
 QuickLook Styling
 ==========================================================================================================*/
-
+.cartModal,
 .quicklookContainer {
   background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
@@ -115,6 +115,9 @@ QuickLook Styling
   height: 100vh;
   width: 100vw;
   display: flex;
+}
+
+.quicklookContainer {
   justify-content: center;
   align-items: center;
 }
@@ -163,13 +166,13 @@ QuickLook Styling
 /*========================================================================================================
 Cart Styling
 ==========================================================================================================*/
-
 .cartContainer {
   background-color: red;
   position: fixed;
-  top: 0;
-  right: 0%;
-  width: 40%;
+  left: 55%;
+  right: 0;
+  height: 100vh;
+  /* width: 40%; */
   animation: all 2s;
 }
 

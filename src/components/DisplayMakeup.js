@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
-import { shoppingCartArray } from './shoppingCartArray';
 
 
 function DisplayMakeup({ makeup }) {
