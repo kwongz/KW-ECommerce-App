@@ -43,12 +43,20 @@ function DisplayMakeup({ makeup }) {
 
     const handleAddToCart = (cartItem) => {
         const cartObj = {
-            name: cartItem.name, 
-            quantity: 1, 
-            price: parseInt(cartItem.price), 
-            finalPrice: parseInt(cartItem.price)
+                    name: cartItem.name, 
+                    quantity: 1, 
+                    price: parseInt(cartItem.price), 
+                    finalPrice: parseInt(cartItem.price)
+                }   
+        const duplicatedItem = addedToCart.filter(item => item.name === cartItem.name)
+        if(duplicatedItem.length) {
+            const objIndex = addedToCart.findIndex(obj => obj.name === cartItem.name)
+            console.log(objIndex)
+            addedToCart[objIndex].quantity = addedToCart[objIndex].quantity + 1
+            addedToCart[objIndex].finalPrice = addedToCart[objIndex].finalPrice + addedToCart[objIndex].price 
+        } else{
+            setAddedToCart([...addedToCart, cartObj]);       
         }
-        setAddedToCart([...addedToCart,cartObj]);
     }
 
     getDisplayDirectory();

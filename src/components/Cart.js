@@ -1,30 +1,19 @@
 import { useState, useEffect } from 'react'
 
 function Cart( {cartItems} ) {
-    const [cartInventory, setCartInventory] = useState([cartItems])
+    const [cartInventory, setCartInventory] = useState(cartItems)
     const [totalCost, setTotalCost] = useState(0);
 
     useEffect(() => {
-        handleTotalCost();
-        const tempArray = [];
-
-        const recent = cartItems[cartItems.length - 1]
-
-        cartItems.forEach((item) => {
-            if (recent.name !== item.name) {
-                tempArray.push()
-            }
-        })
-
-        setCartInventory(tempArray);
-    }, [cartItems] )
+        handleTotalCost();     
+    }, cartItems )
 
     const handleAdd = (item) => {
         const tempArray = [...cartItems]
         tempArray.filter((tempItem) => {
             if (tempItem.name === item.name) {
                 tempItem.quantity = tempItem.quantity + 1;
-                tempItem.finalPrice = tempItem.price + tempItem.finalPrice;
+                tempItem.finalPrice = tempItem.quantity * tempItem.price;
             } 
         })
         handleTotalCost();
