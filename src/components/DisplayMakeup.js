@@ -45,12 +45,6 @@ function DisplayMakeup({ makeup }) {
                     price: parseInt(cartItem.price), 
                     finalPrice: parseInt(cartItem.price)
                 }   
-        // if(addedToCart.filter(item => item.name === cartItem.name).length) {
-        //     console.log('duplicated item')
-            
-        // } else{
-        //     setAddedToCart([...addedToCart, cartObj]);       
-        // }
         const duplicatedItem = addedToCart.filter(item => item.name === cartItem.name)
         if(duplicatedItem.length) {
             const objIndex = addedToCart.findIndex(obj => obj.name === cartItem.name)

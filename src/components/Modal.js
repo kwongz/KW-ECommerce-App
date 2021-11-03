@@ -2,6 +2,7 @@ import ReactDom from "react-dom";
 import { useEffect, useState } from "react";
 import Cart from "./Cart";
 import DisplayItemInfo from "./DisplayItemInfo";
+import { useTransition, animated } from 'react-spring'
 
 function Modal({ onClose, info, forComponent, addToCart, cart, roundPrice }) {
     const [forCart, setForCart] = useState(false);
@@ -20,15 +21,24 @@ function Modal({ onClose, info, forComponent, addToCart, cart, roundPrice }) {
         setForCart(true);
     }
 
+    const transition = useTransition(forCart, {
+        from:{x: 100, opacity: 0},
+        enter:{x: 0, opacity: 1},
+        leave: {x: 100, opacity: 0},
+    });
+
 
     return ReactDom.createPortal(
         <>
             {
-                forCart? 
-                <div className="cartContainer">
-                    <Cart cartItems={cart}/>
-                    <button onClick={onClose}>close cart</button>
-                </div>
+                forCart ? 
+                transition((style, item) => item ?
+                    <animated.div className="cartContainer item" style={style}>
+                        <Cart cartItems={cart}/>
+                        <button onClick={onClose}>close cart</button>
+                    </animated.div>        
+                    : ''   
+                )
                 :
                 <div className="quicklookContainer">
                     <div className="quicklook wrapper">
@@ -37,7 +47,6 @@ function Modal({ onClose, info, forComponent, addToCart, cart, roundPrice }) {
                         <button onClick={handleOnClick}>Add TO CART</button>
                     </div>
                 </div>
-
             }
         </>,
         document.getElementById('portal')
