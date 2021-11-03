@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import Cart from "./Cart";
 import DisplayItemInfo from "./DisplayItemInfo";
 import { useTransition, animated } from 'react-spring'
+import { shoppingCartArray } from "./shoppingCartArray";
 
 function Modal({ onClose, info, forComponent, roundPrice }) {
     const [forCart, setForCart] = useState(false);
+    const [fromNav, setFromNav] = useState(false);
     const [cartItem, setCartItem] = useState();
 
     useEffect(() => {
@@ -13,35 +15,38 @@ function Modal({ onClose, info, forComponent, roundPrice }) {
             setForCart(false)
         } else if (forComponent === "cart") {
             setForCart(true)
+            if (forComponent === "cartNav") {
+                setFromNav(true);
+            } else {
+                setFromNav(false);
+            }
         }
     }, [forComponent])
 
     const handleOnClick = () => {
         // processing the info to pass to parent state
-        // shoppingCartArray(info);
 
-        setCartItem(info)
+        shoppingCartArray(info)
         setForCart(true);
     }
-
-    const transition = useTransition(forCart, {
-        from: { x: 100, opacity: 0 },
-        enter: { x: 0, opacity: 1 },
-        leave: { x: 100, opacity: 0 },
-    });
 
 
     return ReactDom.createPortal(
         <>
             {
                 forCart ?
-                    transition((style, item) => item ?
-                        <animated.div className="cartContainer item" style={style}>
-                            <Cart cartItem={cartItem} />
-                            <button onClick={onClose}>close cart</button>
-                        </animated.div>
-                        : ''
-                    )
+                    <div className="cartContainer">
+                        <Cart />
+                        <button onClick={onClose}>close cart</button>
+                    </div>
+                    // fromNav ? 
+                    //     <Cart />
+                    //     :
+                    //         <div className="cartContainer">
+                    //             <Cart cartItem={cartItem} roundPrice={roundPrice}/>
+                    //             <button onClick={onClose}>close cart</button>
+                    //         </div>
+                    //     )
                     :
                     <div className="quicklookContainer">
                         <div className="quicklook wrapper">

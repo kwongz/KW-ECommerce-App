@@ -1,37 +1,13 @@
 import { useState, useEffect } from 'react'
-import {shoppingCartArray, cartArray} from './shoppingCartArray';
+import {cartArray} from './shoppingCartArray';
 
-function Cart( {cartItem}) {
+function Cart() {
     const [cartInventory, setCartInventory] = useState(cartArray)
     const [totalCost, setTotalCost] = useState(0);
 
     useEffect(() => {
-        shoppingCartArray(cartItem);
         handleTotalCost();  
-    }, [cartItem] )
-
-    // const handleAdd = (item) => {
-    //     const tempArray = [...cartItem]
-    //     tempArray.filter((tempItem) => {
-    //         if (tempItem.name === item.name) {
-    //             tempItem.quantity = tempItem.quantity + 1;
-    //             tempItem.finalPrice = tempItem.quantity * tempItem.price;
-    //         } 
-    //     })
-    //     handleTotalCost();
-    //     setCartInventory(tempArray)
-    // }
-
-    // const handleTotalCost = () => {
-    //     let cost = 0;
-    //     cartInventory.forEach((item) => {
-    //         cost = cost + item.finalPrice;
-    //     })
-    //     setTotalCost(cost);
-    // }
-
-
-
+    }, [])
 
     const handleAdd = (item) => {
         cartArray.filter((tempItem) => {
@@ -55,7 +31,6 @@ function Cart( {cartItem}) {
 
     return (
         <>
-        <p>Cart</p>
             <ul>
                 {
                     cartInventory.map((item, index) => {
@@ -65,7 +40,7 @@ function Cart( {cartItem}) {
                                 <p>{item.quantity}</p>
                                 <button onClick={() => handleAdd(item)}>add</button>
                                 <button>subtract</button>
-                                <p>{item.finalPrice}</p>
+                                <p>${item.finalPrice}</p>
                             </li>
                         )
                     })
