@@ -48,10 +48,20 @@ NAV
 nav {
   display: flex;
   justify-content: center;
+  background-color: whitesmoke;
 }
 
 nav ul {
   display: flex
+}
+
+nav li {
+  padding: 20px 40px;
+  cursor: pointer;
+}
+
+nav li:hover {
+  background-color: wheat;
 }
 
 /*========================================================================================================

@@ -2,19 +2,20 @@ import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Catalogue from './components/Catalogue';
 import Nav from './components/Nav';
+import { useState } from 'react';
 
 function App() {
-
+  const [productType, setProductType] = useState("foundation")
 
   return (
     <Router>
       <header>
         <h1>Hello, world</h1>
-        <Nav />
+        <Nav navProductType={ navProductType => setProductType(navProductType)}/>
       </header>
       <main>
         <Route exact path="/">
-          <Catalogue />
+          <Catalogue callProduct={productType}/>
         </Route>
       </main>
     </Router>
