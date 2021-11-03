@@ -1,23 +1,47 @@
 import { useState, useEffect } from 'react'
+import {shoppingCartArray, cartArray} from './shoppingCartArray';
 
-function Cart( {cartItems} ) {
-    const [cartInventory, setCartInventory] = useState(cartItems)
+function Cart( {cartItem}) {
+    const [cartInventory, setCartInventory] = useState(cartArray)
     const [totalCost, setTotalCost] = useState(0);
 
     useEffect(() => {
-        handleTotalCost();     
-    }, cartItems )
+        shoppingCartArray(cartItem);
+        handleTotalCost();  
+    }, [cartItem] )
+
+    // const handleAdd = (item) => {
+    //     const tempArray = [...cartItem]
+    //     tempArray.filter((tempItem) => {
+    //         if (tempItem.name === item.name) {
+    //             tempItem.quantity = tempItem.quantity + 1;
+    //             tempItem.finalPrice = tempItem.quantity * tempItem.price;
+    //         } 
+    //     })
+    //     handleTotalCost();
+    //     setCartInventory(tempArray)
+    // }
+
+    // const handleTotalCost = () => {
+    //     let cost = 0;
+    //     cartInventory.forEach((item) => {
+    //         cost = cost + item.finalPrice;
+    //     })
+    //     setTotalCost(cost);
+    // }
+
+
+
 
     const handleAdd = (item) => {
-        const tempArray = [...cartItems]
-        tempArray.filter((tempItem) => {
+        cartArray.filter((tempItem) => {
             if (tempItem.name === item.name) {
                 tempItem.quantity = tempItem.quantity + 1;
                 tempItem.finalPrice = tempItem.quantity * tempItem.price;
             } 
         })
         handleTotalCost();
-        setCartInventory(tempArray)
+        setCartInventory(cartArray)
     }
 
     const handleTotalCost = () => {
@@ -31,6 +55,7 @@ function Cart( {cartItems} ) {
 
     return (
         <>
+        <p>Cart</p>
             <ul>
                 {
                     cartInventory.map((item, index) => {

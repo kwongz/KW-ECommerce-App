@@ -41,23 +41,23 @@ function DisplayMakeup({ makeup }) {
         return (Math.round(price * 100) / 100).toFixed(2)
     }
 
-    const handleAddToCart = (cartItem) => {
-        const cartObj = {
-                    name: cartItem.name, 
-                    quantity: 1, 
-                    price: parseInt(cartItem.price), 
-                    finalPrice: parseInt(cartItem.price)
-                }   
-        const duplicatedItem = addedToCart.filter(item => item.name === cartItem.name)
-        if(duplicatedItem.length) {
-            const objIndex = addedToCart.findIndex(obj => obj.name === cartItem.name)
-            console.log(objIndex)
-            addedToCart[objIndex].quantity = addedToCart[objIndex].quantity + 1
-            addedToCart[objIndex].finalPrice = addedToCart[objIndex].finalPrice + addedToCart[objIndex].price 
-        } else{
-            setAddedToCart([...addedToCart, cartObj]);       
-        }
-    }
+    // const handleAddToCart = (cartItem) => {
+    //     const cartObj = {
+    //                 name: cartItem.name, 
+    //                 quantity: 1, 
+    //                 price: parseInt(cartItem.price), 
+    //                 finalPrice: parseInt(cartItem.price)
+    //             }   
+    //     const duplicatedItem = addedToCart.filter(item => item.name === cartItem.name)
+    //     if(duplicatedItem.length) {
+    //         const objIndex = addedToCart.findIndex(obj => obj.name === cartItem.name)
+    //         console.log(objIndex)
+    //         addedToCart[objIndex].quantity = addedToCart[objIndex].quantity + 1
+    //         addedToCart[objIndex].finalPrice = addedToCart[objIndex].finalPrice + addedToCart[objIndex].price 
+    //     } else{
+    //         setAddedToCart([...addedToCart, cartObj]);       
+    //     }
+    // }
 
     getDisplayDirectory();
 
@@ -94,8 +94,8 @@ function DisplayMakeup({ makeup }) {
                     onClose={() => setCallModal(false)}
                     info={makeupInfo}
                     forComponent="quicklook"
-                    addToCart={handleAddToCart}
-                    cart={addedToCart}
+                    // addToCart={handleAddToCart}
+                    // cart={addedToCart}
                     roundPrice={roundPrice}
                 />
                 : null
