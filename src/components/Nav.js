@@ -1,5 +1,7 @@
 import Modal from "./Modal";
 import {useState} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 
 function Nav({ navProductType }) {
@@ -12,12 +14,19 @@ function Nav({ navProductType }) {
     return (
         <>
             <nav>
-                <ul className="navigation">
-                    <li onClick={handleOnClick}>Foundation</li>
-                    <li onClick={handleOnClick}>Blush</li>
-                    <li onClick={handleOnClick}>Lipstick</li>
-                    <li onClick={() => setCallModal(true)}>Cart</li>
-                </ul>
+                <div className="navBelt">
+                    <ul className="wrapper">
+                        <li><FontAwesomeIcon icon={faHeart} /></li>
+                        <li onClick={() => setCallModal(true)}><FontAwesomeIcon icon={faShoppingCart} /></li>
+                    </ul>
+                </div>
+                <div className="navMain">
+                    <ul className="navigation">
+                        <li onClick={handleOnClick}>Foundation</li>
+                        <li onClick={handleOnClick}>Blush</li>
+                        <li onClick={handleOnClick}>Lipstick</li>
+                    </ul>
+                </div>
             </nav>
 
             {

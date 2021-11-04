@@ -12,14 +12,8 @@ function DisplayMakeup({ makeup }) {
     const [allMakeup, setAllMakeup] = useState([]);
 
     useEffect(() => {
-        let newArray = [];
-        makeup.forEach((makeupItem) => {
-            if(makeupItem.price > 0) {
-                newArray.push(makeupItem);
-            }
-        });
-        setCurrentDisplay(newArray.slice(0, 20))
-        setAllMakeup(newArray)
+        setCurrentDisplay(makeup.slice(0, 20))
+        setAllMakeup(makeup)
     }, [makeup])
 
 
@@ -52,7 +46,7 @@ function DisplayMakeup({ makeup }) {
 
 
     return (
-        <div className="wrapper">
+        <div className="displayMakeup">
             <ul className="allMakeupContainer">
                 {
                     currentDisplay.map((individualMakeup) => {
@@ -67,7 +61,7 @@ function DisplayMakeup({ makeup }) {
                                     </div>
                                     <div className="textContent">
                                         <p>{individualMakeup.brand}</p>
-                                        <h2>{individualMakeup.name}</h2>
+                                        <h3>{individualMakeup.name}</h3>
                                         <p>${roundPrice(individualMakeup.price)}</p>
                                     </div>
                                 </li>
@@ -75,7 +69,13 @@ function DisplayMakeup({ makeup }) {
                     })
                 }
             </ul>
-            {buttons}
+            {
+                buttons.length > 1?
+                <div className="numberedButtonContainer">
+                    {buttons}
+                </div>
+                :null
+            }
 
             {
                 callModal ?

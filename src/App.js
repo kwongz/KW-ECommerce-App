@@ -1,24 +1,30 @@
 import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
 import Catalogue from './components/Catalogue';
 import Nav from './components/Nav';
 import { useState } from 'react';
+
 
 function App() {
   const [productType, setProductType] = useState("foundation")
 
   return (
-    <Router>
+    <>
       <header>
-        <h1>Hello, world</h1>
         <Nav navProductType={ navProductType => setProductType(navProductType)}/>
       </header>
+
       <main>
-        <Route exact path="/">
+        <div className="wrapper">
+          {/* <SideFilter productType={productType}/> */}
           <Catalogue callProduct={productType}/>
-        </Route>
+        </div>
       </main>
-    </Router>
+
+      <footer>
+        <p>Made by Tasnia Nabila and Kyle Is Stupid 2021</p>
+      </footer>
+    </>
   );
 }
 
