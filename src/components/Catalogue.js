@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import DisplayMakeup from './DisplayMakeup';
 import SideFilter from './SideFilter';
 
-const Catalogue = ({ callProduct }) => {
+const Catalogue = ({ callProduct, checkCartQuantity }) => {
     const [allMakeup, setAllMakeup] = useState([]);
     const [makeup, setMakeup] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -75,7 +75,7 @@ const Catalogue = ({ callProduct }) => {
                         getBrand={addBrandSearch}
                     />
 
-                    <DisplayMakeup makeup={makeup} />
+                    <DisplayMakeup makeup={makeup} checkCartQuantity={(cartQuantity) => checkCartQuantity(cartQuantity)}/>
                 </>
             }
         </>

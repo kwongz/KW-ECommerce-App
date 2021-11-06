@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import {cartArray} from './shoppingCartArray';
 
-function Cart() {
+function Cart( {checkCartQuantity}) {
     const [cartInventory, setCartInventory] = useState(cartArray)
     const [totalCost, setTotalCost] = useState(0);
 
@@ -9,7 +9,8 @@ function Cart() {
     // everytime cartInventory changes, calculate quantity 
 
     useEffect(() => {
-        handleTotalCost();  
+        handleTotalCost();
+        totalCartItems();
     }, [])
 
     const handleAddSubtract = (item, action) => {
@@ -30,6 +31,7 @@ function Cart() {
         }
         handleTotalCost();
         setCartInventory(cartArray)
+        totalCartItems();
     }
 
     const removeItem = (item) => {
@@ -37,6 +39,7 @@ function Cart() {
         cartArray.splice(cartItemIndex,1)
         setCartInventory(cartArray)
         handleTotalCost();
+        totalCartItems();
     }
 
 
@@ -52,7 +55,13 @@ function Cart() {
         setTotalCost(cost);
     }
 
-    
+    const totalCartItems = () => {
+        let count = 0;
+        cartArray.forEach((cartItem) => {
+            count = count + cartItem.quantity;
+        })
+        checkCartQuantity(count);
+    }
 
 
     return (

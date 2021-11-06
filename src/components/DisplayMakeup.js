@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Modal from "./Modal";
 
 
-function DisplayMakeup({ makeup }) {
+function DisplayMakeup({ makeup, checkCartQuantity }) {
 
     const [currentDisplay, setCurrentDisplay] = useState([]);
     // Potential problem for future renders
@@ -83,7 +83,7 @@ function DisplayMakeup({ makeup }) {
                     onClose={() => setCallModal(false)}
                     info={makeupInfo}
                     forComponent="quicklook"
-                    roundPrice={roundPrice}
+                    checkCartQuantity={(cartQuantity) => checkCartQuantity(cartQuantity)}
                 />
                 : null
             }

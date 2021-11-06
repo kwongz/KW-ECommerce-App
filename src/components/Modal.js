@@ -4,7 +4,7 @@ import Cart from "./Cart";
 import DisplayItemInfo from "./DisplayItemInfo";
 import { shoppingCartArray } from "./shoppingCartArray";
 
-function Modal({ onClose, info, forComponent }) {
+function Modal({ onClose, info, forComponent, checkCartQuantity }) {
     const [forCart, setForCart] = useState(false);
     const [forQuickLook, setforQuickLook] = useState(false);
 
@@ -30,7 +30,7 @@ function Modal({ onClose, info, forComponent }) {
                 forCart ?
                     <div className="cartModal" onClick={onClose}>
                         <div className="cartContainer" onClick={e => e.stopPropagation()}>
-                            <Cart />
+                            <Cart checkCartQuantity={(cartQuantity) => checkCartQuantity(cartQuantity)}/>
                             <button onClick={onClose}>close cart</button>
                         </div>
                     </div>

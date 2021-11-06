@@ -7,7 +7,7 @@ import { cartArray } from './shoppingCartArray'
 
 
 
-function Nav({ navProductType }) {
+function Nav({ navProductType}) {
     const [callModal, setCallModal] = useState(false);
 
     const handleOnClick = (e) => {
@@ -27,7 +27,6 @@ function Nav({ navProductType }) {
                     <ul className="wrapper">
                         <li><FontAwesomeIcon icon={faHeart} /></li>
                         <li onClick={() => setCallModal(true)}><FontAwesomeIcon icon={faShoppingCart} /></li>
-                        <li></li>
                     </ul>
                 </div>
                 <div className="navMain">
