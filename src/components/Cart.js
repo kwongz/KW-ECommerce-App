@@ -26,6 +26,9 @@ function Cart( {checkCartQuantity}) {
                 if (tempItem.name === item.name) {
                     tempItem.quantity = tempItem.quantity - 1;
                     tempItem.finalPrice = tempItem.quantity * tempItem.price;
+                    if (tempItem.quantity <= 0) {
+                        removeItem(tempItem);
+                    }
                 } 
             })
         }
