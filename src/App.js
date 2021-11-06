@@ -3,29 +3,20 @@ import './App.css';
 import Catalogue from './components/Catalogue';
 import Nav from './components/Nav';
 import { useState } from 'react';
-import TotalCartItem from './components/TotalCartItem';
 
 
 function App() {
   const [productType, setProductType] = useState("foundation")
   const [allCartQuantity, setAllCartQuantity] = useState();
 
-  // usestate that pass to NAV
-
-  // function that has setState(cartitem)
-    // above function is passed down catalogue
-    
-  console.log(allCartQuantity);
   return (
     <>
       <header>
-        <Nav navProductType={ navProductType => setProductType(navProductType)} />
-        <TotalCartItem totalCartItems={allCartQuantity}/>
+        <Nav navProductType={ navProductType => setProductType(navProductType)} totalCartItems={allCartQuantity} />
       </header>
 
       <main>
         <div className="wrapper">
-          {/* <SideFilter productType={productType}/> */}
           <Catalogue callProduct={productType} checkCartQuantity={(cartQuantity) => setAllCartQuantity(cartQuantity)}/>
         </div>
       </main>
