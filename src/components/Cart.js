@@ -14,23 +14,16 @@ function Cart( {checkCartQuantity}) {
     }, [])
 
     const handleAddSubtract = (item, action) => {
+        const cartItemIndex = cartArray.findIndex(cartItem => cartItem.name === item.name)
         if (action) {
-            cartArray.filter((tempItem) => {
-                if (tempItem.name === item.name) {
-                    tempItem.quantity = tempItem.quantity + 1;
-                    tempItem.finalPrice = tempItem.quantity * tempItem.price;
-                } 
-            })
+            cartArray[cartItemIndex].quantity = cartArray[cartItemIndex].quantity + 1;
+            cartArray[cartItemIndex].finalPrice = cartArray[cartItemIndex].price * cartArray[cartItemIndex].quantity;
         } else {
-            cartArray.filter((tempItem) => {
-                if (tempItem.name === item.name) {
-                    tempItem.quantity = tempItem.quantity - 1;
-                    tempItem.finalPrice = tempItem.quantity * tempItem.price;
-                    if (tempItem.quantity <= 0) {
-                        removeItem(tempItem);
-                    }
-                } 
-            })
+            cartArray[cartItemIndex].quantity = cartArray[cartItemIndex].quantity - 1;
+            cartArray[cartItemIndex].finalPrice = cartArray[cartItemIndex].price * cartArray[cartItemIndex].quantity;
+            if (cartArray[cartItemIndex].quantity <= 0) {
+                removeItem(cartArray[cartItemIndex]);
+            }
         }
         handleTotalCost();
         setCartInventory(cartArray)
