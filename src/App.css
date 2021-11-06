@@ -31,6 +31,8 @@ GENERAL
   max-width: 1280px;
   width: 98%;
   margin: 0 auto;
+  bottom: 0;
+  width: 100%;
 }
 
 img {
@@ -259,26 +261,55 @@ QuickLook Styling
 Cart Styling
 ==========================================================================================================*/
 .cartContainer {
-  background-color: red;
+  background-color: #F5F5F5;
   position: fixed;
-  left: 55%;
+  left: 65%;
   right: 0;
   height: 100vh;
-  /* width: 40%; */
   animation: all 2s;
+}
+
+.cartContainer > button{
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+} 
+
+.cartContainer {
+  padding: 2rem;
+}
+
+.cartContainer h3 {
+  padding-bottom: 2rem;
+}
+
+.cartItem {
+  /* background-color: teal; */
+  width: 80%;
+  margin: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cartItem * {
+  margin: 1rem 0;
+}
+
+.cartItemImage{
+  width: 30%
 }
 
 
 /*========================================================================================================
 Loading Animation
 ==========================================================================================================*/
-
 .loader-wrapper {
   width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  height: 100vh; 
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0;
   /* background-color: #242f3f; */
   display:flex;
   justify-content: center;
