@@ -11,7 +11,7 @@ const Catalogue = ({ callProduct, checkCartQuantity }) => {
     useEffect(() => {
         setIsLoading(true);
         axios({
-            url: 'http://makeup-api.herokuapp.com/api/v1/products.json',
+            url: 'https://makeup-api.herokuapp.com/api/v1/products.json',
             params: {
                 product_type: callProduct
             }
