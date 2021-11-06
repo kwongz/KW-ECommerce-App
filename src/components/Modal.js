@@ -6,10 +6,11 @@ import { shoppingCartArray } from "./shoppingCartArray";
 
 function Modal({ onClose, info, forComponent }) {
     const [forCart, setForCart] = useState(false);
+    const [forQuickLook, setforQuickLook] = useState(false);
 
     useEffect(() => {
         if (forComponent === "quicklook") {
-            setForCart(false)
+            setforQuickLook(true)
         } else if (forComponent === "cart") {
             setForCart(true)
         }
@@ -17,7 +18,7 @@ function Modal({ onClose, info, forComponent }) {
 
     const handleOnClick = () => {
         // processing the info to pass to parent state
-
+        setforQuickLook(false)
         shoppingCartArray(info)
         setForCart(true);
     }
@@ -34,6 +35,10 @@ function Modal({ onClose, info, forComponent }) {
                         </div>
                     </div>
                     :
+                    null
+            }
+            {
+                forQuickLook ?
                     <div className="quicklookContainer" onClick={onClose}>
                         <div className="quicklook wrapper" onClick={e => e.stopPropagation()}>
                             <DisplayItemInfo info={info} />
@@ -41,6 +46,8 @@ function Modal({ onClose, info, forComponent }) {
                             <button onClick={handleOnClick}>Add TO CART</button>
                         </div>
                     </div>
+                : 
+                null
             }
         </>,
         document.getElementById('portal')

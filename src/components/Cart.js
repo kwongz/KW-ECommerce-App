@@ -5,6 +5,9 @@ function Cart() {
     const [cartInventory, setCartInventory] = useState(cartArray)
     const [totalCost, setTotalCost] = useState(0);
 
+    
+    // everytime cartInventory changes, calculate quantity 
+
     useEffect(() => {
         handleTotalCost();  
     }, [])

@@ -7,7 +7,12 @@ import { useState } from 'react';
 
 function App() {
   const [productType, setProductType] = useState("foundation")
+  console.log('render')
 
+  // usestate that pass to NAV
+
+  // function that has setState(cartitem)
+    // above function is passed down catalogue 
   return (
     <>
       <header>

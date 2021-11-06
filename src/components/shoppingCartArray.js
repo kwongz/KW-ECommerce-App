@@ -1,5 +1,6 @@
 let cartArray = [];
 
+
 function shoppingCartArray(info) {
 
     const cartObj = {
@@ -21,5 +22,6 @@ function shoppingCartArray(info) {
     }
 
 }
+
 
 export {shoppingCartArray, cartArray}
