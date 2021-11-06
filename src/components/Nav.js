@@ -20,11 +20,14 @@ function Nav({ navProductType, totalCartItems}) {
         <>
             <nav>
                 <div className="navBelt">
-                    <ul className="wrapper">
-                        <li><FontAwesomeIcon icon={faHeart} /></li>
-                        <li onClick={() => setCallModal(true)}><FontAwesomeIcon icon={faShoppingCart} /></li>
-                        <li>{totalCartQuantity}</li>
-                    </ul>
+                    <div className="wrapper">
+                        <p>Nabila</p>
+                        <ul>
+                            <li><FontAwesomeIcon icon={faHeart} /></li>
+                            <li onClick={() => setCallModal(true)}><FontAwesomeIcon icon={faShoppingCart} /></li>
+                            <li>{totalCartQuantity}</li>
+                        </ul>
+                    </div>
                 </div>
                 <div className="navMain">
                     <ul className="navigation">
