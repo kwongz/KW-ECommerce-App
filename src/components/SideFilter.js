@@ -13,16 +13,11 @@ function SideFilter({productType, makeupArray, getTag, getBrand}) {
     const sortArrayInfo = () => {
         const newTags = [];
         const newBrands = [];
-        // console.log(makeupArray);
 
         makeupArray.forEach((makeup) => {
-            // console.log(makeup.tag_list);
             if (makeup.tag_list.length > 0) {
-                // console.log(makeup)
                 makeup.tag_list.forEach((tag) => {
-                    // console.log(tag);
                     if (!newTags.includes(tag)){
-                        // console.log(makeup.tag_list);
                         newTags.push(tag);
                     }
                 })

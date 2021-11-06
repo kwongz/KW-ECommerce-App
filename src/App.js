@@ -1,5 +1,4 @@
 import './App.css';
-// import { BrowserRouter as Router, Route } from "react-router-dom";
 import Catalogue from './components/Catalogue';
 import Nav from './components/Nav';
 import { useState } from 'react';
@@ -22,7 +21,7 @@ function App() {
       </main>
 
       <footer>
-        <p>Made by Tasnia Nabila and Kyle Is Stupid 2021</p>
+        <p>Made by Tasnia Nabila and Kyle Wong 2021</p>
       </footer>
     </>
   );
