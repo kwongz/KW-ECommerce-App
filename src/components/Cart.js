@@ -11,6 +11,7 @@ function Cart( {checkCartQuantity}) {
     useEffect(() => {
         handleTotalCost();
         totalCartItems();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleAddSubtract = (item, action) => {

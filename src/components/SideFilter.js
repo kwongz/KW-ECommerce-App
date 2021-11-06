@@ -8,6 +8,7 @@ function SideFilter({productType, makeupArray, getTag, getBrand}) {
 
     useEffect(() => {
         sortArrayInfo();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [productType])
 
     const sortArrayInfo = () => {
