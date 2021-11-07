@@ -41,9 +41,8 @@ function Modal({ onClose, info, forComponent, checkCartQuantity }) {
                 forQuickLook ?
                     <div className="quicklookContainer" onClick={onClose}>
                         <div className="quicklook wrapper" onClick={e => e.stopPropagation()}>
-                            <DisplayItemInfo info={info} />
+                            <DisplayItemInfo info={info} handleOnClick={handleOnClick}/>
                             <button className="closeModalButton" onClick={onClose}>x</button>
-                            <button onClick={handleOnClick}>Add TO CART</button>
                         </div>
                     </div>
                 : 
