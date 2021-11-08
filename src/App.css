@@ -72,6 +72,11 @@ nav {
   width: 100%;
 }
 
+.navBelt .wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
 .navBelt ul {
   display: flex;
   justify-content: flex-end;
