@@ -5,7 +5,6 @@ function SideFilter({ productType, makeupArray, getTag, getBrand }) {
     const [sortBrands, setSortBrands] = useState([]);
     const [showTags, setShowTags] = useState(false);
     const [showBrands, setShowBrands] = useState(false);
-    const [selectedRadioButton, setSelectedRadioButton] = useState("");
 
     useEffect(() => {
         sortArrayInfo();
@@ -24,19 +23,17 @@ function SideFilter({ productType, makeupArray, getTag, getBrand }) {
                     }
                 })
             }
-            if (!newBrands.includes(makeup.brand)) {
-                newBrands.push(makeup.brand);
+            if (makeup.brand) {
+                if (!newBrands.includes(makeup.brand)) {
+                    newBrands.push(makeup.brand);
+                }
             }
         })
 
+        console.log(newBrands)
+
         setSortTags(newTags);
         setSortBrands(newBrands);
-    }
-
-    const handleChange = (e) => {
-        console.log(e.target.value);
-        setSelectedRadioButton(e.target.value)
-        getTag(e.target.value);
     }
 
     return (
@@ -70,38 +67,16 @@ function SideFilter({ productType, makeupArray, getTag, getBrand }) {
                             <ul>
                                 {
                                     sortBrands.map((brand) => {
-                                        return (
-                                            <li key={brand}>
-                                                <label key={brand}>
-                                                    <input 
-                                                        type="radio" 
-                                                        name={brand} 
-                                                        value={brand}
-                                                        checked={selectedRadioButton === brand}
-                                                        onChange={handleChange}
-                                                        />
-                                                    {brand}
-                                                </label>
-
+                                        return(
+                                            <li
+                                                onClick={(e) => getBrand(e.target.innerText.toLowerCase())}
+                                                key={brand} 
+                                                className="brand">{brand}
                                             </li>
                                         )
                                     })
                                 }
                             </ul>
-
-                            // <ul>
-                            //     {
-                            //         sortBrands.map((brand) => {
-                            //             return(
-                            //                 <li
-                            //                     onClick={(e) => getBrand(e.target.innerText.toLowerCase())}
-                            //                     key={brand} 
-                            //                     className="brand">{brand}
-                            //                 </li>
-                            //             )
-                            //         })
-                            //     }
-                            // </ul>
                             : null
                     }
                 </li>
