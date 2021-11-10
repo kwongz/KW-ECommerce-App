@@ -77,6 +77,11 @@ nav {
   justify-content: space-between;
 }
 
+.navBelt .wrapper p {
+  font-size: 1.3rem;
+  margin-left: 20px;
+}
+
 .navBelt ul {
   display: flex;
   justify-content: flex-end;
@@ -125,14 +130,20 @@ main .wrapper {
 
 .allMakeupContainer li {
   padding: 20px;
-  height: 400px;
+  height: 370px;
   width: 300px;
   cursor: pointer;
   position: relative;
+  margin: 2% 1%;
 }
 
 .allMakeupContainer li:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.allMakeupContainer li:hover h3 {
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+  text-decoration: underline wheat;
 }
 
 .allMakeupContainer .imageContainer {
@@ -143,6 +154,10 @@ main .wrapper {
 .allMakeupContainer .textContent {
   position: absolute;
   bottom: 20px;
+}
+
+.allMakeupContainer h3 {
+  margin: 2% 0;
 }
 
 .numberedButtonContainer {
@@ -172,7 +187,6 @@ main .wrapper {
 SIDE FILTER
 ==========================================================================================================*/
 .sideFilterContainer {
-  /* background-color: wheat; */
   width: 300px;
   padding: 0 20px 20px 20px;
 }
@@ -186,19 +200,28 @@ SIDE FILTER
   cursor: pointer;
   width: 100%;
   font-size: 1.1rem;
-  margin: 5% 0;
+  margin: 8% 0;
 }
 
 .tagsContainer ul,
 .brandsContainer ul {
-  padding-left: 5px;
+  /* padding-left: 8%; */
   font-size: 1rem;
 }
 
 .tagsContainer li,
 .brandsContainer li {
-  margin: 2% 0;
+  margin-bottom: 10%;
   cursor: pointer;
+}
+
+.tagsContainer::after,
+.brandsContainer::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: rgb(119, 114, 114);
+  display: block;
 }
 
 .sideFilterContainer h4:hover,

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
-function SideFilter({productType, makeupArray, getTag, getBrand}) {
+function SideFilter({ productType, makeupArray, getTag, getBrand }) {
     const [sortTags, setSortTags] = useState([]);
     const [sortBrands, setSortBrands] = useState([]);
     const [showTags, setShowTags] = useState(false);
     const [showBrands, setShowBrands] = useState(false);
+    const [selectedRadioButton, setSelectedRadioButton] = useState("");
 
     useEffect(() => {
         sortArrayInfo();
@@ -18,18 +19,24 @@ function SideFilter({productType, makeupArray, getTag, getBrand}) {
         makeupArray.forEach((makeup) => {
             if (makeup.tag_list.length > 0) {
                 makeup.tag_list.forEach((tag) => {
-                    if (!newTags.includes(tag)){
+                    if (!newTags.includes(tag)) {
                         newTags.push(tag);
                     }
                 })
             }
-            if(!newBrands.includes(makeup.brand)) {
+            if (!newBrands.includes(makeup.brand)) {
                 newBrands.push(makeup.brand);
             }
         })
 
         setSortTags(newTags);
         setSortBrands(newBrands);
+    }
+
+    const handleChange = (e) => {
+        console.log(e.target.value);
+        setSelectedRadioButton(e.target.value)
+        getTag(e.target.value);
     }
 
     return (
@@ -39,41 +46,63 @@ function SideFilter({productType, makeupArray, getTag, getBrand}) {
                 <li className="tagsContainer">
                     <h4 onClick={() => setShowTags(!showTags)}>Tags</h4>
                     {
-                        showTags?
+                        showTags ?
                             <ul>
                                 {
                                     sortTags.map((tag) => {
-                                        return(
-                                            <li 
+                                        return (
+                                            <li
                                                 onClick={(e) => getTag(e.target.innerText)}
-                                                className="tag" 
+                                                className="tag"
                                                 key={tag}>{tag}
                                             </li>
                                         )
                                     })
                                 }
                             </ul>
-                        : null
+                            : null
                     }
                 </li>
                 <li className="brandsContainer">
                     <h4 onClick={() => setShowBrands(!showBrands)}>Brands</h4>
                     {
-                        showBrands? 
+                        showBrands ?
                             <ul>
                                 {
                                     sortBrands.map((brand) => {
-                                        return(
-                                            <li 
-                                                onClick={(e) => getBrand(e.target.innerText.toLowerCase())}
-                                                key={brand} 
-                                                className="brand">{brand}
+                                        return (
+                                            <li key={brand}>
+                                                <label key={brand}>
+                                                    <input 
+                                                        type="radio" 
+                                                        name={brand} 
+                                                        value={brand}
+                                                        checked={selectedRadioButton === brand}
+                                                        onChange={handleChange}
+                                                        />
+                                                    {brand}
+                                                </label>
+
                                             </li>
                                         )
                                     })
                                 }
                             </ul>
-                        : null
+
+                            // <ul>
+                            //     {
+                            //         sortBrands.map((brand) => {
+                            //             return(
+                            //                 <li
+                            //                     onClick={(e) => getBrand(e.target.innerText.toLowerCase())}
+                            //                     key={brand} 
+                            //                     className="brand">{brand}
+                            //                 </li>
+                            //             )
+                            //         })
+                            //     }
+                            // </ul>
+                            : null
                     }
                 </li>
             </ul>
