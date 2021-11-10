@@ -8,7 +8,7 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 html {
   font-size: 125%;
-  background-color: whitesmoke;
+  background-color: white;
 }
 
 h1, h2, h3, h4, p, ul {
@@ -46,7 +46,7 @@ li {
 }
 
 nav, footer {
-  background-color: black;
+  background-color: #100c08;
 }
 
 footer {
@@ -67,7 +67,7 @@ nav {
 }
 
 .navBelt{
-  background-color: whitesmoke;
+  background-color: white;
   padding: 40px 0;
   width: 100%;
 }
@@ -104,7 +104,7 @@ nav ul {
 }
 
 nav li {
-  color: whitesmoke;
+  color: white;
   padding: 20px 40px;
   cursor: pointer;
 }
@@ -165,7 +165,7 @@ main .wrapper {
 }
 
 .numberedButtons {
-  background-color: whitesmoke;
+  background-color: white;
   padding: 10px 20px;
   margin: 2% 1%;
   border: none;
@@ -182,6 +182,10 @@ main .wrapper {
 SIDE FILTER
 ==========================================================================================================*/
 .sideFilterContainer {
+<<<<<<< HEAD
+=======
+  width: 300px;
+>>>>>>> 0f1fc422d2913877a0501b0039e9a6508817eadb
   padding: 0 20px 20px 20px;
 }
 
@@ -244,11 +248,11 @@ QuickLook Styling
 
 .quicklook  {
   height: 60%;
-  max-height: 500px;
-  max-width: 800px;
+  max-height: 600px;
+  max-width: 900px;
   width: 80%;
   display: flex;
-  background-color: #F5F5F5;
+  background-color: white;
   position: relative;
   border-radius: 15px;
 }
@@ -259,9 +263,9 @@ QuickLook Styling
   min-width: 200px;
 }
 
-.quicklook .imageContainer img{
+/* .quicklook .imageContainer img{
   height: 250px;
-}
+} */
 
 .quicklook .textContent {
   margin: 5%;
@@ -269,7 +273,16 @@ QuickLook Styling
 
 .quicklook .textContent a{
   color: #000;
-  text-decoration: none;
+  text-decoration: underline;
+  display: block;
+  width: fit-content;
+  padding-top: 0.5rem;
+  font-style: initial;
+}
+
+.quicklook .textContent a:hover,
+.quicklook .textContent a:focus{
+  color: blue;
 }
 
 .quicklook .textContent a:hover,
@@ -308,23 +321,51 @@ QuickLook Styling
   font-style: italic;
 }
 
+.colorHolder {
+  margin-top: 5px;
+}
+
+.colorSphere,
+.cartColorSphere {
+  display: inline-block;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  margin: 0 2px;
+  border: 1px solid black
+}
+
+.cartColorSphere{
+  margin: 0;
+}
+
+.colorSphere:hover,
+.colorSphere:focus {
+  border: 1px solid white
+}
+
+.colorHolder li{
+  display: inline;
+}
+
+
 /*========================================================================================================
 Cart Styling
 ==========================================================================================================*/
 .cartContainer {
-  background-color: #F5F5F5;
-  position: fixed;
-  left: 65%;
-  right: 0;
-  height: 100vh;
-  animation: all 2s;
+    background-color: white;
+    position: fixed;
+    right: 0;
+    width: 30%;
+    height: 100vh;
+    animation: all 2s;
+    min-width: 500px;
 }
 
 .cartContainer > button{
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 10;
 } 
 
 .cartContainer {
@@ -337,17 +378,29 @@ Cart Styling
 
 .cartItem {
   width: 80%;
+  font-size: 0.8rem;
   margin: 2rem;
   display: flex;
-  justify-content: space-evenly;
 }
 
-.cartItem * {
-  margin: 1rem 0;
+.cartItem p {
+  margin: 0.5rem 0;
+    font-size: 0.8rem;
 }
 
+.cartContainer ul {
+  overflow-y: scroll;
+  max-height: 90%;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.cartContainer ul::-webkit-scrollbar {
+  display: none;
+}
 .cartItemImage{
-  width: 30%
+  width: 15%;
+  margin-left: auto;
 }
 
 

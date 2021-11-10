@@ -4,6 +4,7 @@ import {cartArray} from './shoppingCartArray';
 function Cart( {checkCartQuantity}) {
     const [cartInventory, setCartInventory] = useState(cartArray)
     const [totalCost, setTotalCost] = useState(0);
+    console.log(cartArray)
 
     
     // everytime cartInventory changes, calculate quantity 
@@ -63,19 +64,25 @@ function Cart( {checkCartQuantity}) {
 
     return (
         <>
-            <h3>Shopping Cart</h3>
+            <h3>Shopping Cart ({cartArray.length})</h3>
             <ul>
                 {
                     cartInventory.map((item, index) => {
                         return(
                             <li className="cartItem"key={index}>
                                 <div>
-                                    <p>{item.name}</p>
+                                    <p>{item.name}: ${item.price}</p>
                                     <p>Qty: {item.quantity}</p>
+                                    {
+                                        item.color ?
+                                            <p>Color: {item.color.colour_name} <figure className='cartColorSphere' 
+                                            style={{backgroundColor:item.color.hex_value}}/></p>
+                                        
+                                        :null
+                                    }
                                     <button onClick={() => {removeItem(item)}}>Remove</button>
-                                    <button onClick={() => handleAddSubtract(item,true)}>add</button>
-                                    <button onClick={() => handleAddSubtract(item,false)}>subtract</button>
-                                    <p>${item.finalPrice}</p>
+                                    <button onClick={() => handleAddSubtract(item,true)}>Add</button>
+                                    <button onClick={() => handleAddSubtract(item,false)}>Subtract</button>
                                 </div>
                                 <div className="cartItemImage">
                                     <img src={item.img} alt={item.name}/>
