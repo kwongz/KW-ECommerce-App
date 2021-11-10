@@ -16,11 +16,17 @@ function Modal({ onClose, info, forComponent, checkCartQuantity }) {
         }
     }, [forComponent])
 
-    const handleOnClick = () => {
+
+    const handleOnClick = (userColorChoice) => {
         // processing the info to pass to parent state
-        setforQuickLook(false)
-        shoppingCartArray(info)
-        setForCart(true);
+        if (userColorChoice || info.product_colors.length === 0){
+            setforQuickLook(false)
+            shoppingCartArray(info, userColorChoice)
+            setForCart(true);
+        } else if ( userColorChoice === '') {
+            alert("please select a color")
+        }
+
     }
 
 

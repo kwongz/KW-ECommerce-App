@@ -1,14 +1,16 @@
 let cartArray = [];
 
 
-function shoppingCartArray(info) {
+function shoppingCartArray(info, userColorChoice) {
+
 
     const cartObj = {
         name: info.name,
         quantity: 1,
         price: parseInt(info.price),
         finalPrice: parseInt(info.price),
-        img: info.api_featured_image
+        img: info.api_featured_image,
+        color: userColorChoice
     }
     
     const duplicatedItem = cartArray.filter(item => item.name === cartObj.name)
