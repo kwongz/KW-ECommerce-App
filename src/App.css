@@ -95,7 +95,7 @@ nav {
 }
 
 .navBelt li:hover {
-  color: wheat;
+  color: rgb(170, 135, 69);
   background-color: transparent;
 }
 
@@ -114,12 +114,35 @@ nav li:hover {
   color: black;
 }
 
+.cart {
+  position: relative;
+}
+
+.cartQuantity {
+  background-color: rgb(207, 17, 44);
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
 /*========================================================================================================
 MAIN
 ==========================================================================================================*/
 
 main .wrapper {
   display: flex;
+}
+
+.displayMakeup {
+  width: calc(100% - 230px);
 }
 
 .allMakeupContainer {
@@ -131,7 +154,7 @@ main .wrapper {
 .allMakeupContainer li {
   padding: 20px;
   height: 370px;
-  width: 300px;
+  width: 290px;
   cursor: pointer;
   position: relative;
   margin: 2% 0;
@@ -182,11 +205,8 @@ main .wrapper {
 SIDE FILTER
 ==========================================================================================================*/
 .sideFilterContainer {
-<<<<<<< HEAD
-=======
-  width: 300px;
->>>>>>> 0f1fc422d2913877a0501b0039e9a6508817eadb
-  padding: 0 20px 20px 20px;
+  width: 230px;
+  padding: 0 0 20px 20px;
 }
 
 .sideFilterContainer h2 {

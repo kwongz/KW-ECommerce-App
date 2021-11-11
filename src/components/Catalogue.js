@@ -45,7 +45,6 @@ const Catalogue = ({ callProduct, checkCartQuantity }) => {
         setMakeup(newArray);
     }
     const addBrandSearch = (brand) => {
-        console.log(brand)
         const newArray = [];
         
         allMakeup.forEach((makeupItem) => {

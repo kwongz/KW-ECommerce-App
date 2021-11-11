@@ -28,9 +28,7 @@ function SideFilter({ productType, makeupArray, getTag, getBrand }) {
                     newBrands.push(makeup.brand);
                 }
             }
-        })
-
-        console.log(newBrands)
+        });
 
         setSortTags(newTags);
         setSortBrands(newBrands);
