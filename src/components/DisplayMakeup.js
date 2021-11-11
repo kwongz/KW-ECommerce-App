@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import Modal from "./Modal";
+import {FavoriteContext} from '../utils/favoriteStore'
 
 
 function DisplayMakeup({ makeup, checkCartQuantity }) {
@@ -10,6 +13,10 @@ function DisplayMakeup({ makeup, checkCartQuantity }) {
     const [callModal, setCallModal] = useState(false);
     const [makeupInfo, setMakeupInfo] = useState({});
     const [allMakeup, setAllMakeup] = useState([]);
+    const [favoriteItemsArray, setFavoriteItemsArray] = useState([])
+    
+    // useContext Logic
+    const {toggleFavorite} = useContext(FavoriteContext)
 
     useEffect(() => {
         setCurrentDisplay(makeup.slice(0, 20))
@@ -44,18 +51,18 @@ function DisplayMakeup({ makeup, checkCartQuantity }) {
 
     getDisplayDirectory();
 
-
     return (
         <div className="displayMakeup">
             <ul className="allMakeupContainer">
-                {
-                    currentDisplay.map((individualMakeup) => {
+                { toggleFavorite 
+                    ? favoriteItemsArray.map((individualMakeup) => {
                         return (
                                 <li 
                                     className="makeupCard" 
                                     key={individualMakeup.id}
-                                    onClick={() => handleModalInfo(individualMakeup)}
+                                    // onClick={() => handleModalInfo(individualMakeup)}
                                 >
+                                    <div onClick={() => handleModalInfo(individualMakeup)}>
                                     <div className="imageContainer">
                                         <img src={individualMakeup.api_featured_image} alt="individualMakeup.name" />
                                     </div>
@@ -64,6 +71,45 @@ function DisplayMakeup({ makeup, checkCartQuantity }) {
                                         <h3>{individualMakeup.name}</h3>
                                         <p>${roundPrice(individualMakeup.price)}</p>
                                     </div>
+                                    </div>
+                                    <button onClick={()=> setFavoriteItemsArray(favoriteItemsArray.filter(el => {
+                                        return el !== individualMakeup
+                                    }))}>
+                                        <FontAwesomeIcon icon={faHeart} />
+                                    </button>
+                                </li>
+                        )
+                    })
+                    
+                    : 
+                    currentDisplay.map((individualMakeup) => {
+                        console.log('hello')
+                        return (
+                            <li 
+                            className="makeupCard" 
+                            key={individualMakeup.id}
+                            // onClick={() => handleModalInfo(individualMakeup)}
+                            >
+                                    <div onClick={() => handleModalInfo(individualMakeup)}>
+                                    <div className="imageContainer">
+                                        <img src={individualMakeup.api_featured_image} alt="individualMakeup.name" />
+                                    </div>
+                                    <div className="textContent">
+                                        <p>{individualMakeup.brand}</p>
+                                        <h3>{individualMakeup.name}</h3>
+                                        <p>${roundPrice(individualMakeup.price)}</p>
+                                    </div>
+                                    </div>
+                                    {/* give favourite button own component to toggle disable */}
+                                    <button disabled={false} onClick={()=> {
+                                        let disableButton = 1
+                                        setFavoriteItemsArray([...favoriteItemsArray, individualMakeup])
+                                        console.log(disableButton)
+                                        disableButton = disableButton + 1
+                                        console.log(disableButton)
+                                    }}>
+                                            <FontAwesomeIcon icon={faHeart} />
+                                    </button>
                                 </li>
                         )
                     })

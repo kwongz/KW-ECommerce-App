@@ -1,12 +1,16 @@
 import Modal from "./Modal";
-import { useState, useEffect } from "react"; 
+import { useState, useEffect, useContext } from "react"; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import {FavoriteContext} from '../utils/favoriteStore'
 
 
 function Nav({ navProductType, totalCartItems}) {
     const [callModal, setCallModal] = useState(false);
     const [totalCartQuantity, setTotalCartQuantity] = useState();
+
+    // useContext Logic
+    const {toggleFavorite, setToggleFavorite} = useContext(FavoriteContext)
 
     useEffect(() => {
         setTotalCartQuantity(totalCartItems)
@@ -23,7 +27,7 @@ function Nav({ navProductType, totalCartItems}) {
                     <div className="wrapper">
                         <p>Nabila</p>
                         <ul>
-                            <li><FontAwesomeIcon icon={faHeart} /></li>
+                            <li onClick={() => setToggleFavorite(!toggleFavorite)}><FontAwesomeIcon icon={faHeart} /></li>
                             <li onClick={() => setCallModal(true)}><FontAwesomeIcon icon={faShoppingCart} /></li>
                             <li>{totalCartQuantity}</li>
                         </ul>

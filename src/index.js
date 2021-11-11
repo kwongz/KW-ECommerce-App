@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import FavoriteProvider from './utils/favoriteStore'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <FavoriteProvider>
+      <App />
+    </FavoriteProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
