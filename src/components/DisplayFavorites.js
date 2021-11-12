@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import Modal from "./Modal";
 import {FavoriteContext} from '../utils/favoriteStore'
 import MakeUpCard from "./MakeUpCard";

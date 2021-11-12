@@ -14,7 +14,7 @@ function DisplayMakeup({ makeup, checkCartQuantity }) {
     const [makeupInfo, setMakeupInfo] = useState({});
     const [allMakeup, setAllMakeup] = useState([]);
 
-    const {handleAddRemoveFavorite, favoriteItemsArray} = useContext(FavoriteContext)
+    const {handleAddRemoveFavorite} = useContext(FavoriteContext)
 
     useEffect(() => {
         setCurrentDisplay(makeup.slice(0, 20))
