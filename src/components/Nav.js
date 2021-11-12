@@ -28,8 +28,18 @@ function Nav({ navProductType, totalCartItems}) {
                         <p>Nabila</p>
                         <ul>
                             <li onClick={() => setToggleFavorite(!toggleFavorite)}><FontAwesomeIcon icon={faHeart} /></li>
-                            <li onClick={() => setCallModal(true)}><FontAwesomeIcon icon={faShoppingCart} /></li>
-                            <li>{totalCartQuantity}</li>
+                            <li 
+                                className="cart"
+                                onClick={() => setCallModal(true)}>
+                                <FontAwesomeIcon icon={faShoppingCart} />
+                                {
+                                    totalCartQuantity?
+                                    <span className="cartQuantity">
+                                        {totalCartQuantity}
+                                    </span>
+                                    :null
+                                }
+                            </li>
                         </ul>
                     </div>
                 </div>
