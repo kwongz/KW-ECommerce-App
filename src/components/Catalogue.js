@@ -1,12 +1,18 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import DisplayFavorites from './DisplayFavorites';
 import DisplayMakeup from './DisplayMakeup';
 import SideFilter from './SideFilter';
+import {FavoriteContext} from '../utils/favoriteStore'
+
 
 const Catalogue = ({ callProduct, checkCartQuantity }) => {
     const [allMakeup, setAllMakeup] = useState([]);
     const [makeup, setMakeup] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+        // useContext Logic
+    const {toggleFavorite} = useContext(FavoriteContext)
     
     useEffect(() => {
         setIsLoading(true);
@@ -74,8 +80,12 @@ const Catalogue = ({ callProduct, checkCartQuantity }) => {
                         getTag={addTagSearch}
                         getBrand={addBrandSearch}
                     />
-
+                {
+                    toggleFavorite ?
                     <DisplayMakeup makeup={makeup} checkCartQuantity={(cartQuantity) => checkCartQuantity(cartQuantity)}/>
+                    :
+                    <DisplayFavorites makeup={makeup} checkCartQuantity={(cartQuantity) => checkCartQuantity(cartQuantity)}/>
+                }
                 </>
             }
         </>

@@ -1,19 +1,10 @@
-import React, {useState} from 'react'
+import React, {useEffect}from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
-function MakeUpCard({individualMakeup,handleModalInfo,roundPrice,handleAddRemoveFavorite}) {
 
-    const [isButtonActive, setIsButtonActive] = useState(false)
+function MakeUpCard({individualMakeup, handleModalInfo, roundPrice, handleAddRemoveFavorite}) {
 
-    const handleFavoriteClick = (individualMakeup) => {
-        handleAddRemoveFavorite(individualMakeup)
-        setIsButtonActive(prevIsButtonActive => !isButtonActive) 
-    }
-
-    const buttonStyle = {
-        color: isButtonActive ? 'red' : null
-    }
 
     return (
         <li 
@@ -30,8 +21,8 @@ function MakeUpCard({individualMakeup,handleModalInfo,roundPrice,handleAddRemove
                 <p>${roundPrice(individualMakeup.price)}</p>
             </div>
             </div>
-            <button onClick={()=> handleFavoriteClick(individualMakeup)}>
-                <FontAwesomeIcon style={buttonStyle} icon={faHeart} />
+            <button className='heartButton' onClick={()=> handleAddRemoveFavorite(individualMakeup)}>
+                <FontAwesomeIcon style={{color:individualMakeup.favorite ? 'red' : null}} icon={faHeart} />
             </button>
         </li>
     )
