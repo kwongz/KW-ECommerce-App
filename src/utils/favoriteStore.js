@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 export const FavoriteContext = React.createContext(null)
 
 
-export default ({children}) => {
+function FavoriteStore({children}) {
         // use context logic
     const [toggleFavorite, setToggleFavorite] = useState(true);
     const [favoriteItemsArray, setFavoriteItemsArray] = useState([])
@@ -35,3 +35,5 @@ export default ({children}) => {
         {children}
     </FavoriteContext.Provider>
 }
+
+export default FavoriteStore
