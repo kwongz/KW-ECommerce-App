@@ -4,10 +4,6 @@ import {cartArray} from './shoppingCartArray';
 function Cart( {checkCartQuantity}) {
     const [cartInventory, setCartInventory] = useState(cartArray)
     const [totalCost, setTotalCost] = useState(0);
-    console.log(cartArray)
-
-    
-    // everytime cartInventory changes, calculate quantity 
 
     useEffect(() => {
         handleTotalCost();

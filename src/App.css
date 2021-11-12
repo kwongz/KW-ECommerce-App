@@ -45,7 +45,8 @@ li {
   list-style: none;
 }
 
-nav, footer {
+.navMain, 
+footer {
   background-color: #100c08;
 }
 
@@ -66,15 +67,27 @@ nav {
   margin-bottom: 3%;
 }
 
+.banner {
+  background: url("./assets/banner.jpg") center;
+  background-size: cover;
+  height: 70vh;
+  width: 100%;
+}
+
 .navBelt{
   background-color: white;
-  padding: 40px 0;
+  padding: 20px 0;
   width: 100%;
 }
 
 .navBelt .wrapper {
   display: flex;
   justify-content: space-between;
+}
+
+.navBelt .wrapper p {
+  font-size: 1.3rem;
+  margin-left: 20px;
 }
 
 .navBelt ul {
@@ -90,8 +103,18 @@ nav {
 }
 
 .navBelt li:hover {
-  color: wheat;
+  color: rgb(170, 135, 69);
   background-color: transparent;
+}
+
+.navMain {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation {
+  text-align: center;
 }
 
 nav ul {
@@ -109,12 +132,35 @@ nav li:hover {
   color: black;
 }
 
+.cart {
+  position: relative;
+}
+
+.cartQuantity {
+  background-color: rgb(207, 17, 44);
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
 /*========================================================================================================
 MAIN
 ==========================================================================================================*/
 
 main .wrapper {
   display: flex;
+}
+
+.displayMakeup {
+  width: calc(100% - 230px);
 }
 
 .allMakeupContainer {
@@ -125,14 +171,19 @@ main .wrapper {
 
 .allMakeupContainer li {
   padding: 20px;
-  height: 400px;
-  width: 300px;
+  height: 370px;
+  width: 290px;
   cursor: pointer;
   position: relative;
+  margin: 2% 0;
 }
 
 .allMakeupContainer li:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.allMakeupContainer li:hover h3 {
+  text-decoration: underline black;
 }
 
 .allMakeupContainer .imageContainer {
@@ -143,6 +194,10 @@ main .wrapper {
 .allMakeupContainer .textContent {
   position: absolute;
   bottom: 20px;
+}
+
+.allMakeupContainer h3 {
+  margin: 2% 0;
 }
 
 .numberedButtonContainer {
@@ -179,8 +234,8 @@ main .wrapper {
 SIDE FILTER
 ==========================================================================================================*/
 .sideFilterContainer {
-  width: 300px;
-  padding: 0 20px 20px 20px;
+  width: 230px;
+  padding: 0 0 20px 20px;
 }
 
 .sideFilterContainer h2 {
@@ -192,19 +247,25 @@ SIDE FILTER
   cursor: pointer;
   width: 100%;
   font-size: 1.1rem;
-  margin: 5% 0;
+  margin: 15px 0;
 }
 
-.tagsContainer ul,
-.brandsContainer ul {
-  padding-left: 5px;
-  font-size: 1rem;
-}
-
-.tagsContainer li,
-.brandsContainer li {
-  margin: 2% 0;
+.brand,
+.tag {
+  margin-bottom: 15px;
   cursor: pointer;
+  font-size: 1rem;
+  margin-left: 15px;
+  text-transform: capitalize;
+}
+
+.tagsContainer::after,
+.brandsContainer::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: rgb(119, 114, 114);
+  display: block;
 }
 
 .sideFilterContainer h4:hover,
@@ -434,4 +495,50 @@ Loading Animation
   50% { height: 100%;}
   75% { height: 100%;}
   100% { height: 0%;}
+}
+
+
+/*========================================================================================================
+Responsive Design
+==========================================================================================================*/
+@media (max-width: 830px) {
+  main .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sideFilterContainer {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .sideFilterContainer h2 {
+    text-align: center;
+  }
+
+  .tagsContainer li,
+  .brandsContainer li {
+    text-align: center;
+  }
+
+  .displayMakeup {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .numberedButtonContainer {
+    flex-wrap: wrap;
+  }
+
+}
+
+@media (max-width: 440px) {
+  .navigation li,
+  .navigation {
+    width: 100%;
+  }
+  
+  .navigation {
+    flex-direction: column;
+  }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function SideFilter({productType, makeupArray, getTag, getBrand}) {
+function SideFilter({ productType, makeupArray, getTag, getBrand }) {
     const [sortTags, setSortTags] = useState([]);
     const [sortBrands, setSortBrands] = useState([]);
     const [showTags, setShowTags] = useState(false);
@@ -18,15 +18,19 @@ function SideFilter({productType, makeupArray, getTag, getBrand}) {
         makeupArray.forEach((makeup) => {
             if (makeup.tag_list.length > 0) {
                 makeup.tag_list.forEach((tag) => {
-                    if (!newTags.includes(tag)){
+                    if (!newTags.includes(tag)) {
                         newTags.push(tag);
                     }
                 })
             }
-            if(!newBrands.includes(makeup.brand)) {
-                newBrands.push(makeup.brand);
+            if (makeup.brand) {
+                if (!newBrands.includes(makeup.brand)) {
+                    newBrands.push(makeup.brand);
+                }
             }
-        })
+        });
+
+        // console.log(newTags)
 
         setSortTags(newTags);
         setSortBrands(newBrands);
@@ -39,33 +43,33 @@ function SideFilter({productType, makeupArray, getTag, getBrand}) {
                 <li className="tagsContainer">
                     <h4 onClick={() => setShowTags(!showTags)}>Tags</h4>
                     {
-                        showTags?
+                        showTags ?
                             <ul>
                                 {
                                     sortTags.map((tag) => {
-                                        return(
-                                            <li 
-                                                onClick={(e) => getTag(e.target.innerText)}
-                                                className="tag" 
+                                        return (
+                                            <li
+                                                onClick={(e) => getTag(e.target.textContent)}
+                                                className="tag"
                                                 key={tag}>{tag}
                                             </li>
                                         )
                                     })
                                 }
                             </ul>
-                        : null
+                            : null
                     }
                 </li>
                 <li className="brandsContainer">
                     <h4 onClick={() => setShowBrands(!showBrands)}>Brands</h4>
                     {
-                        showBrands? 
+                        showBrands ?
                             <ul>
                                 {
                                     sortBrands.map((brand) => {
                                         return(
-                                            <li 
-                                                onClick={(e) => getBrand(e.target.innerText.toLowerCase())}
+                                            <li
+                                                onClick={(e) => getBrand(e.target.textContent)}
                                                 key={brand} 
                                                 className="brand">{brand}
                                             </li>
@@ -73,7 +77,7 @@ function SideFilter({productType, makeupArray, getTag, getBrand}) {
                                     })
                                 }
                             </ul>
-                        : null
+                            : null
                     }
                 </li>
             </ul>
