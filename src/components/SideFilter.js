@@ -30,6 +30,8 @@ function SideFilter({ productType, makeupArray, getTag, getBrand }) {
             }
         });
 
+        // console.log(newTags)
+
         setSortTags(newTags);
         setSortBrands(newBrands);
     }
@@ -47,7 +49,7 @@ function SideFilter({ productType, makeupArray, getTag, getBrand }) {
                                     sortTags.map((tag) => {
                                         return (
                                             <li
-                                                onClick={(e) => getTag(e.target.innerText)}
+                                                onClick={(e) => getTag(e.target.textContent)}
                                                 className="tag"
                                                 key={tag}>{tag}
                                             </li>
@@ -67,7 +69,7 @@ function SideFilter({ productType, makeupArray, getTag, getBrand }) {
                                     sortBrands.map((brand) => {
                                         return(
                                             <li
-                                                onClick={(e) => getBrand(e.target.innerText.toLowerCase())}
+                                                onClick={(e) => getBrand(e.target.textContent)}
                                                 key={brand} 
                                                 className="brand">{brand}
                                             </li>
