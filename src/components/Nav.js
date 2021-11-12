@@ -10,7 +10,7 @@ function Nav({ navProductType, totalCartItems}) {
     const [totalCartQuantity, setTotalCartQuantity] = useState();
 
     // useContext Logic
-    const {toggleFavorite, setToggleFavorite} = useContext(FavoriteContext)
+    const {toggleFavorite, setToggleFavorite, favoriteItemsArray} = useContext(FavoriteContext)
 
     useEffect(() => {
         setTotalCartQuantity(totalCartItems)
@@ -18,6 +18,7 @@ function Nav({ navProductType, totalCartItems}) {
 
     const handleOnClick = (e) => {
         navProductType(e.target.innerText.toLowerCase())
+        setToggleFavorite(true)
     }
 
     return (
@@ -27,7 +28,17 @@ function Nav({ navProductType, totalCartItems}) {
                     <div className="wrapper">
                         <p>Nabila</p>
                         <ul>
-                            <li onClick={() => setToggleFavorite(!toggleFavorite)}><FontAwesomeIcon icon={faHeart} /></li>
+                            <li className="navHeart"
+                                onClick={() => setToggleFavorite(!toggleFavorite)}>
+                                <FontAwesomeIcon icon={faHeart} />
+                                {
+                                    favoriteItemsArray.length  ?
+                                    <span className="navHeartQuantity">
+                                        {favoriteItemsArray.length}
+                                    </span>
+                                    :null
+                                }
+                            </li>
                             <li 
                                 className="cart"
                                 onClick={() => setCallModal(true)}>
