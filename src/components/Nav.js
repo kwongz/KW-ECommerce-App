@@ -41,6 +41,7 @@ function Nav({ navProductType, totalCartItems}) {
                         </ul>
                     </div>
                 </div>
+                <div className="banner"></div>
                 <div className="navMain">
                     <ul className="navigation">
                         <li onClick={handleOnClick}>Foundation</li>

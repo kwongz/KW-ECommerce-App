@@ -14,8 +14,8 @@ const handleColorChoice = (color) => {
                 <img src={info.api_featured_image} alt={info.name} />
                 <ul className='colorHolder'>
                     {
-                        info.product_colors.map(color => {
-                            return <li onClick={()=>handleColorChoice(color)}>
+                        info.product_colors.map((color, index) => {
+                            return <li key={`${index}${color}`} onClick={()=>handleColorChoice(color)}>
                                 <figure className='colorSphere' style={{backgroundColor:color.hex_value}}></figure>
                             </li>
                         })

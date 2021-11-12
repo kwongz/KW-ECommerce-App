@@ -45,7 +45,8 @@ li {
   list-style: none;
 }
 
-nav, footer {
+.navMain, 
+footer {
   background-color: #100c08;
 }
 
@@ -66,9 +67,16 @@ nav {
   margin-bottom: 3%;
 }
 
+.banner {
+  background: url("./assets/banner.jpg") center;
+  background-size: cover;
+  height: 70vh;
+  width: 100%;
+}
+
 .navBelt{
   background-color: white;
-  padding: 40px 0;
+  padding: 20px 0;
   width: 100%;
 }
 
@@ -97,6 +105,16 @@ nav {
 .navBelt li:hover {
   color: rgb(170, 135, 69);
   background-color: transparent;
+}
+
+.navMain {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation {
+  text-align: center;
 }
 
 nav ul {
@@ -466,4 +484,50 @@ Loading Animation
   50% { height: 100%;}
   75% { height: 100%;}
   100% { height: 0%;}
+}
+
+
+/*========================================================================================================
+Responsive Design
+==========================================================================================================*/
+@media (max-width: 830px) {
+  main .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sideFilterContainer {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .sideFilterContainer h2 {
+    text-align: center;
+  }
+
+  .tagsContainer li,
+  .brandsContainer li {
+    text-align: center;
+  }
+
+  .displayMakeup {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .numberedButtonContainer {
+    flex-wrap: wrap;
+  }
+
+}
+
+@media (max-width: 440px) {
+  .navigation li,
+  .navigation {
+    width: 100%;
+  }
+  
+  .navigation {
+    flex-direction: column;
+  }
 }
