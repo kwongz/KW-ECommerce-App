@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Modal from "./Modal";
+import {FavoriteContext} from '../utils/favoriteStore'
+import MakeUpCard from "./MakeUpCard";
+
 
 
 function DisplayMakeup({ makeup, checkCartQuantity }) {
@@ -11,11 +14,12 @@ function DisplayMakeup({ makeup, checkCartQuantity }) {
     const [makeupInfo, setMakeupInfo] = useState({});
     const [allMakeup, setAllMakeup] = useState([]);
 
+    const {handleAddRemoveFavorite, favoriteItemsArray} = useContext(FavoriteContext)
+
     useEffect(() => {
         setCurrentDisplay(makeup.slice(0, 20))
         setAllMakeup(makeup)
     }, [makeup])
-
 
     const getDisplayDirectory = () => {
         // write code
@@ -29,7 +33,6 @@ function DisplayMakeup({ makeup, checkCartQuantity }) {
     const sortMakeup = (num) => {
         const startingPoint = num * 20;
         const endPoint = startingPoint + 20;
-
         setCurrentDisplay(allMakeup.slice(startingPoint, endPoint))
     }
 
@@ -44,39 +47,27 @@ function DisplayMakeup({ makeup, checkCartQuantity }) {
 
     getDisplayDirectory();
 
-
     return (
         <div className="displayMakeup">
-            <ul className="allMakeupContainer">
+                <ul className="allMakeupContainer">
+                        {currentDisplay.map((individualMakeup) => {
+                            return (
+                                <MakeUpCard 
+                                    individualMakeup={individualMakeup} 
+                                    handleModalInfo={handleModalInfo}
+                                    roundPrice={roundPrice}
+                                    handleAddRemoveFavorite={handleAddRemoveFavorite}
+                                />
+                            )
+                        })}
+                </ul>
                 {
-                    currentDisplay.map((individualMakeup) => {
-                        return (
-                                <li 
-                                    className="makeupCard" 
-                                    key={individualMakeup.id}
-                                    onClick={() => handleModalInfo(individualMakeup)}
-                                >
-                                    <div className="imageContainer">
-                                        <img src={individualMakeup.api_featured_image} alt="individualMakeup.name" />
-                                    </div>
-                                    <div className="textContent">
-                                        <p>{individualMakeup.brand}</p>
-                                        <h3>{individualMakeup.name}</h3>
-                                        <p>${roundPrice(individualMakeup.price)}</p>
-                                    </div>
-                                </li>
-                        )
-                    })
-                }
-            </ul>
-            {
-                buttons.length > 1?
-                <div className="numberedButtonContainer">
+                    buttons.length > 1 ?
+                    <div className="numberedButtonContainer">
                     {buttons}
-                </div>
-                :null
-            }
-
+                    </div>
+                    :null
+                }
             {
                 callModal ?
                 <Modal

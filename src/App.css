@@ -168,6 +168,13 @@ main .wrapper {
   text-transform: capitalize;
 }
 
+.makeupCard .heartButton{
+  position: absolute;
+  top: 20px;
+  right:10px;
+  /* background-color: transparent; */
+  /* border: none; */
+}
 /*========================================================================================================
 SIDE FILTER
 ==========================================================================================================*/
