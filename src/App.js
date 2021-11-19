@@ -1,7 +1,7 @@
 import './App.css';
 import Catalogue from './components/Catalogue';
 import Nav from './components/Nav';
-import { useState } from 'react';
+import { useState} from 'react';
 
 
 function App() {

@@ -8,7 +8,7 @@ function FavoriteStore({children}) {
     const [toggleFavorite, setToggleFavorite] = useState(true);
     const [favoriteItemsArray, setFavoriteItemsArray] = useState([])
 
-        const handleAddRemoveFavorite = (individualMakeup) => {
+    const handleAddRemoveFavorite = (individualMakeup) => {
         // check if the makeup is already in the favorite array
         if(favoriteItemsArray.filter(el => el === individualMakeup).length){
             individualMakeup.favorite = false
@@ -23,12 +23,13 @@ function FavoriteStore({children}) {
     }
 
 
+
     const favoriteStore = {
         toggleFavorite, 
         setToggleFavorite,
         favoriteItemsArray,
         setFavoriteItemsArray,
-        handleAddRemoveFavorite
+        handleAddRemoveFavorite,
     }
 
     return <FavoriteContext.Provider value={favoriteStore}>

@@ -11,7 +11,8 @@ const Catalogue = ({ callProduct, checkCartQuantity }) => {
     const [makeup, setMakeup] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-        // useContext Logic
+
+    // useContext Logic
     const {toggleFavorite} = useContext(FavoriteContext)
     
     useEffect(() => {
@@ -25,6 +26,8 @@ const Catalogue = ({ callProduct, checkCartQuantity }) => {
             takeOutNoPrice(res.data);
         })
     }, [callProduct]);
+    
+
 
     const takeOutNoPrice = (apiResult) => {
         const newMakeupArray = [];

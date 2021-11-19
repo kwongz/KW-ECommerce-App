@@ -1,5 +1,5 @@
 import Modal from "./Modal";
-import { useState, useEffect, useContext } from "react"; 
+import { useState, useEffect, useContext, useRef } from "react"; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import {FavoriteContext} from '../utils/favoriteStore'
@@ -8,6 +8,7 @@ import {FavoriteContext} from '../utils/favoriteStore'
 function Nav({ navProductType, totalCartItems}) {
     const [callModal, setCallModal] = useState(false);
     const [totalCartQuantity, setTotalCartQuantity] = useState();
+    const inputEl = useRef()
 
     // useContext Logic
     const {toggleFavorite, setToggleFavorite, favoriteItemsArray} = useContext(FavoriteContext)
@@ -16,10 +17,44 @@ function Nav({ navProductType, totalCartItems}) {
         setTotalCartQuantity(totalCartItems)
     }, [totalCartItems]);
 
-    const handleOnClick = (e) => {
+    useEffect(() => {
+        window.addEventListener('scroll', handleScrollPastBanner)
+        return () => {
+            window.removeEventListener('scroll',handleScrollPastBanner)
+        }
+    })
+
+    const handleMakeUpClick = (e) => {
         navProductType(e.target.innerText.toLowerCase())
         setToggleFavorite(true)
     }
+
+    const handleFavClick = () => {
+        setToggleFavorite(!toggleFavorite)
+        handleScroll()
+    }
+
+    const handleScroll = () => {
+        inputEl.current.scrollIntoView({behavior:'smooth', block:'start'})
+    }
+
+    const handleCartClick = () => {
+        setCallModal(true)
+    }
+
+    const handleScrollPastBanner = () => {
+        // const scrolled = window.scrollY;
+        // const bannerEl = document.getElementById('banner')
+        // const displayListEl = inputEl.current
+        // console.log(scrolled)
+        // if(scrolled > bannerEl.scrollHeight - 75){
+        //     return displayListEl.className = 'navMain padding-top'
+            
+        // } 
+        // displayListEl.className = 'navMain padding-none'
+        return
+    }
+
 
     return (
         <>
@@ -29,7 +64,7 @@ function Nav({ navProductType, totalCartItems}) {
                         <p>Nabila</p>
                         <ul>
                             <li className="navHeart"
-                                onClick={() => setToggleFavorite(!toggleFavorite)}>
+                                onClick={handleFavClick}>
                                 <FontAwesomeIcon icon={faHeart} />
                                 {
                                     favoriteItemsArray.length  ?
@@ -41,7 +76,7 @@ function Nav({ navProductType, totalCartItems}) {
                             </li>
                             <li 
                                 className="cart"
-                                onClick={() => setCallModal(true)}>
+                                onClick={handleCartClick}>
                                 <FontAwesomeIcon icon={faShoppingCart} />
                                 {
                                     totalCartQuantity?
@@ -54,12 +89,12 @@ function Nav({ navProductType, totalCartItems}) {
                         </ul>
                     </div>
                 </div>
-                <div className="banner"></div>
-                <div className="navMain">
+                <div id="banner" className="banner"></div>
+                <div ref={inputEl} className="navMain">
                     <ul className="navigation">
-                        <li onClick={handleOnClick}>Foundation</li>
-                        <li onClick={handleOnClick}>Blush</li>
-                        <li onClick={handleOnClick}>Lipstick</li>
+                        <li onClick={handleMakeUpClick}>Foundation</li>
+                        <li onClick={handleMakeUpClick}>Blush</li>
+                        <li onClick={handleMakeUpClick}>Lipstick</li>
                     </ul>
                 </div>
             </nav>

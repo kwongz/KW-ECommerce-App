@@ -34,6 +34,7 @@ function DisplayFavorites({ checkCartQuantity }) {
 
     return (
         <div className="displayMakeup">
+            <h3>Favourites</h3>
             <ul className="allMakeupContainer">
                 { favoriteItemsArray.map((individualMakeup) => {
                     return (
