@@ -10,8 +10,10 @@ function DisplayItemInfo({ info, handleOnClick }) {
 
     return (
         <>
-            <div className="imageContainer">
-                <img src={info.api_featured_image} alt={info.name} />
+            <div className="imageAndColourOptions">
+                <div className="imageContainer">
+                    <img src={info.api_featured_image} alt={info.name} />
+                </div>
                 <ul className='colorHolder'>
                     {
                         info.product_colors.map((color, index) => {
@@ -20,8 +22,8 @@ function DisplayItemInfo({ info, handleOnClick }) {
                             </li>
                         })
                     }
+                    <p>Selected Color: {colorChoice.colour_name}</p>
                 </ul>
-                <p>Selected Color: {colorChoice.colour_name}</p>
             </div>
             <div className="textContent">
                 <p className="brand">{info.brand}</p>

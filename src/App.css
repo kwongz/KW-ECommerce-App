@@ -334,7 +334,7 @@ QuickLook Styling
   border-radius: 15px;
 }
 
-.quicklook .imageContainer {
+.quicklook .imageAndColourOptions {
   width: calc(100% - 70% - 40px);
   margin: 5%;
   min-width: 200px;
@@ -616,6 +616,99 @@ Responsive Design
     flex-wrap: wrap;
   }
 
+  .quicklook {
+    height: 70%;
+    width: 100%;
+    margin: 0;
+  }
+
+  .quicklook .closeModalButton {
+    right: 2%;
+  }
+
+}
+
+@media (max-width: 630px) {
+  .quicklook {
+    display: flex;
+    flex-direction: column;
+  }
+  .quicklook .imageAndColourOptions {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 3%;
+    margin: 0;
+  }
+
+  .colorHolder {
+    width: 50%;
+  }
+
+  .quicklook .imageContainer {
+    width: 110px;
+  }
+
+  .quicklook .textContent {
+    margin-top: 2%;
+  }
+
+  .quicklook .textContent .description {
+    height: 220px;
+    overflow-y: auto;
+  }
+
+  .quicklook .textContent button {
+    margin-right: 4%;
+  }
+
+  .quicklook .closeModalButton {
+    right: 3%;
+  }
+
+  .cartContainer {
+    padding: 4%;
+  }
+
+  .cartContainer > button {
+    top: 2%;
+    right: 2%;
+  }
+
+  .cartContainer ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .cartContainer .cartItem {
+    margin: 3%;
+    width: 80%;
+  }
+
+  .cartContainer .finalCost {
+    margin-top: 2%;
+  }
+
+  .cartContainer h3,
+  .cartContainer .finalCost {
+    padding-left: 13%;
+  }
+}
+
+@media (max-width: 504px) {
+  .cartContainer {
+    min-width: 100%;
+  }
+
+  .cartContainer h3,
+  .cartContainer .finalCost {
+    padding-left: 0;
+  }
+
+  .cartItem {
+    justify-content: right;
+  }
 }
 
 @media (max-width: 440px) {
@@ -626,5 +719,62 @@ Responsive Design
   
   .navigation {
     flex-direction: column;
+  }
+
+  .quicklook .imageAndColourOptions {
+    margin-top: 6%;
+    padding-top: 4%;
+  }
+
+  .quicklook .textContent .description {
+    height: 180px;
+    overflow-y: auto;
+  }
+
+  .cartContainer .cartItem {
+    width: 100%;
+    padding: 2% 10%;
+  }
+
+  .cartContainer .cartItem .cartItemImage {
+    margin-left: 15px;
+    width: 65px;
+  }
+}
+
+@media (max-height: 815px) {
+  .quicklook {
+    height: 90%;
+  }
+}
+
+@media (max-height: 585px) {
+  .quicklook {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+
+  .quicklook .imageContainer {
+    width: 110px;
+  }
+
+  .quicklook .textContent {
+    margin-top: 2%;
+  }
+}
+
+@media (max-height: 407px) {
+  .quicklook .textContent {
+    margin-left: 1%;
+  }
+
+  .quicklook .textContent .description {
+    height: 160px;
+    overflow-y: auto;
+  }
+
+  .quicklook .imageAndColourOptions {
+    min-width: 280px;
   }
 }
