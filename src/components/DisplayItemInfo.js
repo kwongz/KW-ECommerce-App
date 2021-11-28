@@ -1,12 +1,12 @@
-import {useState} from 'react'
+import { useState } from 'react'
 
-function DisplayItemInfo({info, handleOnClick}) {
+function DisplayItemInfo({ info, handleOnClick }) {
 
-const [colorChoice, setColorChoice] = useState('')
+    const [colorChoice, setColorChoice] = useState('')
 
-const handleColorChoice = (color) => {
-    setColorChoice(color)
-}
+    const handleColorChoice = (color) => {
+        setColorChoice(color)
+    }
 
     return (
         <>
@@ -15,8 +15,8 @@ const handleColorChoice = (color) => {
                 <ul className='colorHolder'>
                     {
                         info.product_colors.map((color, index) => {
-                            return <li key={`${index}${color}`} onClick={()=>handleColorChoice(color)}>
-                                <figure className='colorSphere' style={{backgroundColor:color.hex_value}}></figure>
+                            return <li key={`${index}${color}`} onClick={() => handleColorChoice(color)}>
+                                <figure className='colorSphere' style={{ backgroundColor: color.hex_value }}></figure>
                             </li>
                         })
                     }
@@ -25,12 +25,12 @@ const handleColorChoice = (color) => {
             </div>
             <div className="textContent">
                 <p className="brand">{info.brand}</p>
-                <h2>{info.name}</h2>
+                <h4>{info.name}</h4>
                 <p className="price">
                     ${info.price}
                 </p>
-                <p className='description'>{info.description}<a className='websiteLink'href={info.website_link}>Link to Website</a></p>
-            <button onClick={() => handleOnClick(colorChoice)}>Add to Cart</button>
+                <p className='description'>{info.description}<a className='websiteLink' href={info.website_link}>Link to Website</a></p>
+                <button onClick={() => handleOnClick(colorChoice)}>Add to Cart</button>
             </div>
         </>
     )

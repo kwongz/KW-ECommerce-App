@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
-import {cartArray} from './shoppingCartArray';
+import { cartArray } from './shoppingCartArray';
 
-function Cart( {checkCartQuantity}) {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMinus, faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+
+function Cart({ checkCartQuantity }) {
     const [cartInventory, setCartInventory] = useState(cartArray)
     const [totalCost, setTotalCost] = useState(0);
 
@@ -30,7 +33,7 @@ function Cart( {checkCartQuantity}) {
 
     const removeItem = (item) => {
         const cartItemIndex = cartArray.findIndex(cartItem => cartItem.name === item.name)
-        cartArray.splice(cartItemIndex,1)
+        cartArray.splice(cartItemIndex, 1)
         setCartInventory(cartArray)
         handleTotalCost();
         totalCartItems();
@@ -39,9 +42,9 @@ function Cart( {checkCartQuantity}) {
 
     const handleTotalCost = () => {
         let cost = 0;
-        if(cartInventory.length > 0) {
+        if (cartInventory.length > 0) {
             cartInventory.forEach((item) => {
-                    cost = cost + item.finalPrice;
+                cost = cost + item.finalPrice;
             })
         } else {
             cost = 0
@@ -64,24 +67,41 @@ function Cart( {checkCartQuantity}) {
             <ul>
                 {
                     cartInventory.map((item, index) => {
-                        return(
-                            <li className="cartItem"key={index}>
-                                <div>
+                        return (
+                            <li className="cartItem" key={index}>
+                                <div className="cartItemText">
                                     <p>{item.name}: ${item.price}</p>
                                     <p>Qty: {item.quantity}</p>
                                     {
                                         item.color ?
-                                            <p>Color: {item.color.colour_name} <figure className='cartColorSphere' 
-                                            style={{backgroundColor:item.color.hex_value}}/></p>
-                                        
-                                        :null
+                                            <p>Color: {item.color.colour_name} <figure className='cartColorSphere'
+                                                style={{ backgroundColor: item.color.hex_value }} /></p>
+
+                                            : null
                                     }
-                                    <button onClick={() => {removeItem(item)}}>Remove</button>
-                                    <button onClick={() => handleAddSubtract(item,true)}>Add</button>
-                                    <button onClick={() => handleAddSubtract(item,false)}>Subtract</button>
+
+                                    <div className="cartButtonContainers">
+                                        <div className="addAndRemoveButtons">
+                                            <button 
+                                                onClick={() => handleAddSubtract(item, true)}>
+                                                <FontAwesomeIcon icon={faPlus} />
+                                            </button>
+                                            <button 
+                                                onClick={() => handleAddSubtract(item, false)}>
+                                                <FontAwesomeIcon icon={faMinus} />
+                                            </button>
+                                        </div>
+
+                                        <button 
+                                            className="trashIcon"
+                                            onClick={() => { removeItem(item) }}>
+                                            <FontAwesomeIcon icon={faTrashAlt} />
+                                        </button>
+                                    </div>
+
                                 </div>
                                 <div className="cartItemImage">
-                                    <img src={item.img} alt={item.name}/>
+                                    <img src={item.img} alt={item.name} />
                                 </div>
                             </li>
                         )

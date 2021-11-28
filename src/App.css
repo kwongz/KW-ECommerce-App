@@ -243,13 +243,20 @@ main .wrapper {
   text-transform: capitalize;
 }
 
-.makeupCard .heartButton{
+.makeupCard .heartButton {
   position: absolute;
-  top: 20px;
+  top: 5px;
   right:10px;
-  /* background-color: transparent; */
-  /* border: none; */
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
 }
+
+.makeupCard .heartButton:hover {
+  background-color: rgb(228, 220, 220);
+}
+
 /*========================================================================================================
 SIDE FILTER
 ==========================================================================================================*/
@@ -317,7 +324,7 @@ QuickLook Styling
 }
 
 .quicklook  {
-  height: 60%;
+  height: 65%;
   max-height: 600px;
   max-width: 900px;
   width: 80%;
@@ -339,6 +346,10 @@ QuickLook Styling
 
 .quicklook .textContent {
   margin: 5%;
+}
+
+.quicklook h4 {
+  margin: 2% 0;
 }
 
 .quicklook .textContent a{
@@ -368,6 +379,7 @@ QuickLook Styling
 .closeModalButton {
   position: absolute;
   right: 0;
+  font-size: 1.5rem;
   background-color: transparent;
   border: none;
   padding: 10px;
@@ -389,6 +401,9 @@ QuickLook Styling
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 3%;
 }
 
 .quicklook .textContent button:hover {
@@ -396,13 +411,13 @@ QuickLook Styling
   color: white;
 }
 
-.quicklook .textContent .brand {
+.quicklook .brand {
   font-style: italic;
+  margin: 0;
 }
 
-.quicklook .textContent .description {
+.quicklook .description {
   margin: 2% 0;
-  font-size: 14px;
   font-style: italic;
 }
 
@@ -431,6 +446,7 @@ QuickLook Styling
 
 .colorHolder li{
   display: inline;
+  cursor: pointer;
 }
 
 
@@ -449,9 +465,17 @@ Cart Styling
 
 .cartContainer > button{
   position: absolute;
-  right: 0;
+  right: 1%;
   top: 0;
-} 
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.cartContainer > button:hover,
+.cartContainer > button:focus {
+  color: rgb(207, 17, 44);
+}
 
 .cartContainer {
   padding: 2rem;
@@ -463,14 +487,17 @@ Cart Styling
 
 .cartItem {
   width: 80%;
-  font-size: 0.8rem;
   margin: 2rem;
   display: flex;
+  position: relative;
 }
+
+.cartItem .cartItemText {
+  width: 80%;
+} 
 
 .cartItem p {
   margin: 0.5rem 0;
-    font-size: 0.8rem;
 }
 
 .cartContainer ul {
@@ -484,10 +511,33 @@ Cart Styling
   display: none;
 }
 .cartItemImage{
-  width: 15%;
+  width: 18%;
   margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
+.cartItem button {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+}
+
+.cartItem button:hover,
+.cartItem button:focus {
+  color: rgb(207, 17, 44);
+}
+
+.cartButtonContainers {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 5%;
+}
+
+.addAndRemoveButtons button {
+  margin-right: 5px;
+}
 
 /*========================================================================================================
 Loading Animation
