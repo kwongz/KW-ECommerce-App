@@ -1,12 +1,12 @@
-import {useState} from 'react'
+import { useState } from 'react'
 
-function DisplayItemInfo({info, handleOnClick}) {
+function DisplayItemInfo({ info, handleOnClick, roundPrice }) {
 
-const [colorChoice, setColorChoice] = useState('')
+    const [colorChoice, setColorChoice] = useState('')
 
-const handleColorChoice = (color) => {
-    setColorChoice(color)
-}
+    const handleColorChoice = (color) => {
+        setColorChoice(color)
+    }
 
     return (
         <>
@@ -25,14 +25,13 @@ const handleColorChoice = (color) => {
                 <ul className='colorHolder'>
                     {
                         info.product_colors.map((color, index) => {
-                            return <li key={`${index}${color}`} onClick={()=>handleColorChoice(color)}>
-                                <figure className='colorSphere' style={{backgroundColor:color.hex_value}}></figure>
+                            return <li key={`${index}${color}`} onClick={() => handleColorChoice(color)}>
+                                <figure className='colorSphere' style={{ backgroundColor: color.hex_value }}></figure>
                             </li>
                         })
                     }
+                    <p>Selected Color: {colorChoice.colour_name}</p>
                 </ul>
-                <p>Selected Color: {colorChoice.colour_name}</p>
-            <button onClick={() => handleOnClick(colorChoice)}>Add to Cart</button>
             </div>
         </>
     )
