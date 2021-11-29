@@ -170,6 +170,12 @@ nav li:hover {
   font-size: 0.9rem;
 }
 
+.scrollToEl {
+  position: absolute;
+  bottom: 0;
+  height: 74.5px;
+}
+
 /*========================================================================================================
 MAIN
 ==========================================================================================================*/
@@ -180,7 +186,7 @@ main .wrapper {
 
 .displayMakeup {
   width: calc(100% - 230px);
-  min-height: 80vh;
+  min-height: 90vh;
 }
 
 .allMakeupContainer {
@@ -203,12 +209,12 @@ main .wrapper {
 
 .allMakeupContainer li:hover {
   /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+    box-shadow: 0 20px 36px 0 rgba(0,0,0,0.4);
 }
 
-.allMakeupContainer li:hover h3 {
+/* .allMakeupContainer li:hover h3 {
   text-decoration: underline black;
-}
+} */
 
 .allMakeupContainer .imageContainer {
   width: 60%;
@@ -285,8 +291,11 @@ SIDE FILTER
   margin-bottom: 15px;
   cursor: pointer;
   font-size: 1rem;
-  margin-left: 15px;
   text-transform: capitalize;
+}
+
+.tag {
+  margin-left: 15px;
 }
 
 .tagsContainer::after,
@@ -463,6 +472,13 @@ Cart Styling
     height: 100vh;
     animation: all 2s;
     min-width: 500px;
+}
+
+@media (max-width: 570px) {
+    .cartContainer {
+      width: 90%;
+      min-width: 0px;
+  }
 }
 
 .cartContainer > button{

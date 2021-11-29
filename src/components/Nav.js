@@ -17,16 +17,10 @@ function Nav({ navProductType, totalCartItems}) {
         setTotalCartQuantity(totalCartItems)
     }, [totalCartItems]);
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScrollPastBanner)
-        return () => {
-            window.removeEventListener('scroll',handleScrollPastBanner)
-        }
-    })
-
     const handleMakeUpClick = (e) => {
         navProductType(e.target.innerText.toLowerCase())
         setToggleFavorite(true)
+        handleScroll()
     }
 
     const handleFavClick = () => {
@@ -35,24 +29,11 @@ function Nav({ navProductType, totalCartItems}) {
     }
 
     const handleScroll = () => {
-        inputEl.current.scrollIntoView({behavior:'smooth', block:'start'})
+        inputEl.current.scrollIntoView({block: "start", inline: "nearest", behavior:"smooth"})
     }
 
     const handleCartClick = () => {
         setCallModal(true)
-    }
-
-    const handleScrollPastBanner = () => {
-        // const scrolled = window.scrollY;
-        // const bannerEl = document.getElementById('banner')
-        // const displayListEl = inputEl.current
-        // console.log(scrolled)
-        // if(scrolled > bannerEl.scrollHeight - 75){
-        //     return displayListEl.className = 'navMain padding-top'
-            
-        // } 
-        // displayListEl.className = 'navMain padding-none'
-        return
     }
 
 
@@ -89,8 +70,10 @@ function Nav({ navProductType, totalCartItems}) {
                         </ul>
                     </div>
                 </div>
-                <div id="banner" className="banner"></div>
-                <div ref={inputEl} className="navMain">
+                <div id="banner" className="banner">
+                    <div ref={inputEl} className="scrollToEl"></div>
+                </div>
+                <div className="navMain">
                     <ul className="navigation">
                         <li onClick={handleMakeUpClick}>Foundation</li>
                         <li onClick={handleMakeUpClick}>Blush</li>
