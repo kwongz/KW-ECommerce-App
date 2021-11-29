@@ -75,6 +75,7 @@ function DisplayMakeup({ makeup, checkCartQuantity }) {
                     info={makeupInfo}
                     forComponent="quicklook"
                     checkCartQuantity={(cartQuantity) => checkCartQuantity(cartQuantity)}
+                    roundPrice={roundPrice}
                 />
                 : null
             }

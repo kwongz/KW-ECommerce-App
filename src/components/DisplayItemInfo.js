@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function DisplayItemInfo({ info, handleOnClick }) {
+function DisplayItemInfo({ info, handleOnClick, roundPrice }) {
 
     const [colorChoice, setColorChoice] = useState('')
 
@@ -29,7 +29,7 @@ function DisplayItemInfo({ info, handleOnClick }) {
                 <p className="brand">{info.brand}</p>
                 <h4>{info.name}</h4>
                 <p className="price">
-                    ${info.price}
+                    ${roundPrice(info.price)}
                 </p>
                 <p className='description'>{info.description}<a className='websiteLink' href={info.website_link}>Link to Website</a></p>
                 <button onClick={() => handleOnClick(colorChoice)}>Add to Cart</button>

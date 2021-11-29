@@ -6,7 +6,7 @@ import { shoppingCartArray } from "./shoppingCartArray";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-function Modal({ onClose, info, forComponent, checkCartQuantity }) {
+function Modal({ onClose, info, forComponent, checkCartQuantity, roundPrice }) {
     const [forCart, setForCart] = useState(false);
     const [forQuickLook, setforQuickLook] = useState(false);
 
@@ -49,7 +49,7 @@ function Modal({ onClose, info, forComponent, checkCartQuantity }) {
                 forQuickLook ?
                     <div className="quicklookContainer" onClick={onClose}>
                         <div className="quicklook wrapper" onClick={e => e.stopPropagation()}>
-                            <DisplayItemInfo info={info} handleOnClick={handleOnClick}/>
+                            <DisplayItemInfo info={info} roundPrice={roundPrice} handleOnClick={handleOnClick}/>
                             <button className="closeModalButton" onClick={onClose}><FontAwesomeIcon icon={faTimes} /></button>
                         </div>
                     </div>

@@ -16,7 +16,7 @@ function MakeUpCard({individualMakeup, handleModalInfo, roundPrice, handleAddRem
                 <img src={individualMakeup.api_featured_image} alt="individualMakeup.name" />
             </div>
             <div className="textContent">
-                <p>{individualMakeup.brand}</p>
+                <p className="makeupBrand">{individualMakeup.brand}</p>
                 <h3>{individualMakeup.name}</h3>
                 <p>${roundPrice(individualMakeup.price)}</p>
             </div>
