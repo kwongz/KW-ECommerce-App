@@ -32,6 +32,7 @@ function DisplayItemInfo({ info, handleOnClick, roundPrice }) {
                     }
                     <p>Selected Color: {colorChoice.colour_name}</p>
                 </ul>
+                <button onClick={() => handleOnClick(colorChoice)}>Add to Cart</button>
             </div>
         </>
     )

@@ -22,10 +22,12 @@ function Modal({ onClose, info, forComponent, checkCartQuantity, roundPrice }) {
     const handleOnClick = (userColorChoice) => {
         // processing the info to pass to parent state
         if (userColorChoice || info.product_colors.length === 0){
+            console.log(userColorChoice)
             setforQuickLook(false)
             shoppingCartArray(info, userColorChoice)
             setForCart(true);
         } else if ( userColorChoice === '') {
+            console.log()
             alert("please select a color")
         }
 

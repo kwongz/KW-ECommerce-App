@@ -11,7 +11,7 @@ function MakeUpCard({individualMakeup, handleModalInfo, roundPrice, handleAddRem
             className="makeupCard" 
             key={individualMakeup.id}
         >
-            <div onClick={() => handleModalInfo(individualMakeup)}>
+            <div className='contentContainer'onClick={() => handleModalInfo(individualMakeup)}>
             <div className="imageContainer">
                 <img src={individualMakeup.api_featured_image} alt="individualMakeup.name" />
             </div>
