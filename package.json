@@ -1,5 +1,6 @@
 {
-  "name": "e-commerce-app",
+  "homepage": "https://taz-and-kyle-ecommerce-app.github.io/KW-ECommerce-App/",
+  "name": "KW-ECommerce-App",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
