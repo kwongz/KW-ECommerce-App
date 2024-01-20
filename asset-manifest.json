@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/KW-ECommerce-App/static/css/main.8859c8c1.css",
+    "main.js": "/KW-ECommerce-App/static/js/main.9defae1b.js",
+    "static/js/787.269ff393.chunk.js": "/KW-ECommerce-App/static/js/787.269ff393.chunk.js",
+    "static/media/banner.jpg": "/KW-ECommerce-App/static/media/banner.3d09a12d52301ef4e9b3.jpg",
+    "index.html": "/KW-ECommerce-App/index.html",
+    "main.8859c8c1.css.map": "/KW-ECommerce-App/static/css/main.8859c8c1.css.map",
+    "main.9defae1b.js.map": "/KW-ECommerce-App/static/js/main.9defae1b.js.map",
+    "787.269ff393.chunk.js.map": "/KW-ECommerce-App/static/js/787.269ff393.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8859c8c1.css",
+    "static/js/main.9defae1b.js"
+  ]
+}
